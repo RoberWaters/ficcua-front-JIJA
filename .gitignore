@@ -1,0 +1,8 @@
+CLAUDE.md
+
+# Windows/WSL download metadata cruft
+*:Zone.Identifier
+
+# macOS metadata cruft
+.DS_Store
+._*

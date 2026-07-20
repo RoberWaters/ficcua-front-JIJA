@@ -1,1 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Hanken+Grotesk:wght@400;500;600;700;800;900&display=swap');
 @import "tailwindcss";
+
+/* ─── Design tokens ──────────────────────────────────────────────────────── */
+@theme {
+  --color-ficcua-red: #D13B5E;
+  --color-ficcua-gold: #E8B33E;
+  --color-ficcua-green: #4FA84E;
+  --color-ficcua-blue: #2F57C6;
+
+  --color-ink: #150A24;
+  --color-ink-700: #241238;
+  --color-ink-500: #3A2154;
+  --color-cream: #FFF7EC;
+  --color-cream-200: #F6E9D6;
+
+  --font-display: 'Bricolage Grotesque', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Custom easing curves — the built-in ones are too weak (Emil K.) */
+:root {
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+/* ─── Base ───────────────────────────────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-ink);
+  color: var(--color-cream);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--color-ficcua-gold);
+  color: var(--color-ink);
+}
+
+/* Keyboard focus only — visible ring for tab navigation, nothing on mouse click.
+   Uses the brand gold so it reads as intentional, not a browser default. */
+:focus-visible {
+  outline: 2px solid var(--color-ficcua-gold);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Warm film grain overlay for texture, sits above everything, non-interactive */
+.grain::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ─── Utility helpers ────────────────────────────────────────────────────── */
+.font-display { font-family: var(--font-display); }
+
+.text-gradient-warm {
+  background: linear-gradient(96deg, var(--color-ficcua-gold), #F6C86B, var(--color-ficcua-red));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-cool {
+  background: linear-gradient(96deg, #8FB4FF, #A9C0FF, #86D68A);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Reveal-on-scroll: a clean opacity fade only — no vertical movement, so nothing
+   "travels" up the page as you scroll. Kept subtle and quick. */
+.reveal {
+  opacity: 0;
+  transition: opacity 0.55s var(--ease-out);
+  will-change: opacity;
+}
+.reveal.is-visible {
+  opacity: 1;
+}
+
+/* ─── Keyframes ──────────────────────────────────────────────────────────── */
+@keyframes float-y {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50%      { transform: translateY(-22px) rotate(6deg); }
+}
+@keyframes float-y-alt {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50%      { transform: translateY(-16px) rotate(-5deg); }
+}
+@keyframes confetti-fall {
+  0%   { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+}
+@keyframes spin-fwd { to { transform: rotate(360deg); } }
+@keyframes spin-rev { to { transform: rotate(-360deg); } }
+@keyframes breathe {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.04); }
+}
+@keyframes holo-spin {
+  0%   { transform: rotateY(0deg); }
+  100% { transform: rotateY(360deg); }
+}
+@keyframes holo-scan {
+  0%   { transform: translateY(-100%); }
+  100% { transform: translateY(220%); }
+}
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+@keyframes ken-burns {
+  0%   { transform: scale(1) translate(0, 0); }
+  100% { transform: scale(1.12) translate(-1.5%, -1%); }
+}
+@keyframes gradient-drift {
+  0%, 100% { background-position: 0% 50%; }
+  50%      { background-position: 100% 50%; }
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.animate-marquee { animation: marquee 42s linear infinite; }
+
+.animate-float-y      { animation: float-y 6s ease-in-out infinite; }
+.animate-float-y-alt  { animation: float-y-alt 7s ease-in-out infinite; }
+
+/* ─── Reduced motion ─────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .reveal { opacity: 1; transform: none; }
+}
