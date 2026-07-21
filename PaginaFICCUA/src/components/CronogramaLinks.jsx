@@ -12,10 +12,10 @@ function Arrow() {
 
 export function CronogramaLinks() {
   return (
-    <section id="cronogramas" className="relative scroll-mt-24 bg-ink py-24">
+    <section id="cronogramas" className="relative scroll-mt-24 bg-cream py-24">
       <div className="mx-auto max-w-7xl px-6">
         <Reveal className="mb-14 text-center">
-          <h2 className="font-display text-4xl font-black text-cream md:text-5xl">
+          <h2 className="font-display text-4xl font-black text-ink md:text-5xl">
             Consulta los cronogramas
           </h2>
         </Reveal>

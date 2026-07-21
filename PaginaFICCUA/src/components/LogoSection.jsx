@@ -4,15 +4,15 @@ import { Reveal } from "./Reveal";
 export function LogoSection() {
   return (
     <section className="relative overflow-hidden py-28">
-      {/* aurora background */}
+      {/* soft warm background, tuned to sit behind the logo's own colors */}
       <div
         className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(60% 55% at 50% 40%, #2A1348 0%, #150A24 70%), linear-gradient(180deg,#150A24,#150A24)",
+            "radial-gradient(60% 55% at 50% 40%, #FFFDF7 0%, #FFF7EC 70%)",
         }}
       />
-      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[520px] w-[520px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-ficcua-gold/10 blur-3xl" />
+      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[520px] w-[520px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-ficcua-gold/15 blur-3xl" />
       <div className="pointer-events-none absolute left-[20%] top-[20%] h-72 w-72 rounded-full bg-ficcua-red/10 blur-3xl" />
       <div className="pointer-events-none absolute right-[18%] bottom-[16%] h-72 w-72 rounded-full bg-ficcua-blue/10 blur-3xl" />
 
@@ -28,7 +28,7 @@ export function LogoSection() {
             <div className="relative">
               {/* rotating dashed halo */}
               <div
-                className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[130%] w-[130%] -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-dashed border-ficcua-gold/20"
+                className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[130%] w-[130%] -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-dashed border-ficcua-gold/35"
                 style={{ animation: "spin-fwd 32s linear infinite" }}
               />
               <img
@@ -42,10 +42,10 @@ export function LogoSection() {
         </Reveal>
 
         <Reveal delay={220}>
-          <p className="mx-auto mt-10 max-w-xl font-display text-2xl font-medium italic leading-snug text-cream/85 md:text-3xl">
+          <p className="mx-auto mt-10 max-w-xl font-display text-2xl font-medium italic leading-snug text-ink/75 md:text-3xl">
             &ldquo;Una nueva historia florece con el arte y la cultura&rdquo;
           </p>
-          <p className="mt-4 text-sm font-semibold uppercase tracking-[0.2em] text-cream/50">
+          <p className="mt-4 text-sm font-semibold uppercase tracking-[0.2em] text-ink/45">
             Honduras · UNAH · 2026
           </p>
         </Reveal>

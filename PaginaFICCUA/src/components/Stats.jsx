@@ -43,12 +43,12 @@ export function Stats() {
         </Reveal>
       </div>
 
-      {/* Flat, solid-color counter band — full-bleed, tiles flush together. */}
-      <div className="grid w-full grid-cols-2 lg:grid-cols-4">
+      {/* Solid-color counter tiles, rounded to match the cards elsewhere on the page. */}
+      <div className="mx-auto grid max-w-7xl grid-cols-2 gap-5 px-6 lg:grid-cols-4">
         {STATS.map((s, i) => (
           <Reveal key={s.label} delay={i * 80}>
             <div
-              className="group relative flex h-full flex-col justify-center px-7 py-9 text-cream transition-[filter] duration-300 hover:brightness-110 sm:px-9 sm:py-11"
+              className="group relative flex h-full flex-col justify-center rounded-3xl px-7 py-9 text-cream shadow-lg transition-[filter] duration-300 hover:brightness-110 sm:px-9 sm:py-11"
               style={{ background: s.accent }}
             >
               <div className="flex items-center gap-4">

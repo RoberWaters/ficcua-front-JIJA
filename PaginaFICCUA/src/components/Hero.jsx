@@ -46,7 +46,7 @@ export function Hero() {
       </div>
 
       <div className="relative z-20 mx-auto w-full max-w-7xl px-6 pb-20 pt-32">
-        <div className="max-w-4xl">
+        <div className="mx-auto max-w-4xl text-center">
           <h1 className="font-display text-[clamp(3rem,9vw,7rem)] font-black leading-[0.9] tracking-tight">
             <span className="block overflow-hidden">
               <span className="block" style={{ animation: "rise 0.9s var(--ease-out) 0.05s both" }}>
@@ -60,17 +60,9 @@ export function Hero() {
             </span>
           </h1>
 
-          <p
-            className="mt-6 max-w-2xl text-lg font-medium leading-relaxed text-cream/75 md:text-xl"
-            style={{ animation: "fade-in-up 0.8s var(--ease-out) 0.4s both" }}
-          >
-            Una nueva historia florece con el arte y la cultura. Ocho países centroamericanos se
-            encuentran para celebrar la danza, la música y las tradiciones que nos unen.
-          </p>
-
           <div
-            className="mt-10 flex flex-wrap gap-4"
-            style={{ animation: "fade-in-up 0.8s var(--ease-out) 0.55s both" }}
+            className="mt-10 flex flex-wrap justify-center gap-4"
+            style={{ animation: "fade-in-up 0.8s var(--ease-out) 0.4s both" }}
           >
             <a
               href="#cronogramas"

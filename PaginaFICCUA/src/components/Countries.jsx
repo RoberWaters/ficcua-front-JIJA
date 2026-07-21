@@ -6,8 +6,8 @@ const STRIP = [...COUNTRIES, ...COUNTRIES];
 
 export function Countries() {
   return (
-    <section id="paises" className="relative scroll-mt-24 overflow-hidden bg-ink py-24">
-      <div className="pointer-events-none absolute inset-0 opacity-[0.07]">
+    <section id="paises" className="relative scroll-mt-24 overflow-hidden bg-cream py-24">
+      <div className="pointer-events-none absolute inset-0 opacity-[0.12]">
         <div className="absolute -left-20 top-10 h-72 w-72 rounded-full bg-ficcua-green blur-3xl" />
         <div className="absolute -right-20 bottom-10 h-72 w-72 rounded-full bg-ficcua-red blur-3xl" />
       </div>
@@ -17,10 +17,10 @@ export function Countries() {
           <span className="text-xs font-black uppercase tracking-[0.25em] text-ficcua-green">
             Naciones participantes
           </span>
-          <h2 className="mt-3 font-display text-4xl font-black text-cream md:text-5xl">
+          <h2 className="mt-3 font-display text-4xl font-black text-ink md:text-5xl">
             Ocho países, una sola fiesta
           </h2>
-          <p className="mt-3 text-lg text-cream/55">
+          <p className="mt-3 text-lg text-ink/55">
             Centroamérica y el Caribe se encuentran en el arte.
           </p>
         </Reveal>
@@ -42,7 +42,7 @@ export function Countries() {
                 className="mx-5 flex w-52 shrink-0 flex-col items-center gap-4"
                 aria-hidden={i >= COUNTRIES.length ? "true" : undefined}
               >
-                <div className="aspect-[4/3] w-full overflow-hidden rounded-xl shadow-[0_14px_34px_-14px_rgba(0,0,0,0.7)] ring-1 ring-white/15">
+                <div className="aspect-[4/3] w-full overflow-hidden rounded-xl shadow-[0_14px_34px_-14px_rgba(21,10,36,0.25)] ring-1 ring-ink/10">
                   <img
                     src={c.flag}
                     alt={`Bandera de ${c.name}`}
@@ -50,7 +50,7 @@ export function Countries() {
                     loading="lazy"
                   />
                 </div>
-                <span className="text-sm font-bold tracking-wide text-cream/80">
+                <span className="text-sm font-bold tracking-wide text-ink/70">
                   {c.name}
                 </span>
               </div>

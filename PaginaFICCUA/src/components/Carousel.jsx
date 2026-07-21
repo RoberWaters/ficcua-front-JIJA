@@ -66,7 +66,7 @@ export function Carousel() {
         >
           <div
             className="relative mx-auto"
-            style={{ width: "min(100%, calc(100vh * 3 / 2))", aspectRatio: "3 / 2" }}
+            style={{ width: "100%", aspectRatio: "3 / 2" }}
           >
             {CAROUSEL.map((item, i) => (
               <figure

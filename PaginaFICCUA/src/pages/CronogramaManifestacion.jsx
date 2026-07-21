@@ -55,14 +55,14 @@ export function CronogramaManifestacion() {
         description="Danza, teatro, música, artes visuales, cine y literatura — descubre la programación de cada disciplina del festival."
       />
 
-      <section className="relative bg-ink pb-28">
+      <section className="relative bg-cream pb-28">
         <div className="mx-auto max-w-7xl px-6">
           <div className="grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
             {MANIFESTACIONES.map((m, i) => (
               <Reveal key={m.key} delay={i * 90}>
-                <div className="group relative flex h-full flex-col overflow-hidden rounded-3xl bg-ink-700/60 p-8 ring-1 ring-white/10 shadow-xl transition-[transform,box-shadow] duration-300 hover:-translate-y-2 hover:shadow-2xl">
+                <div className="group relative flex h-full flex-col overflow-hidden rounded-3xl bg-white p-8 ring-1 ring-ink/10 shadow-xl transition-[transform,box-shadow] duration-300 hover:-translate-y-2 hover:shadow-2xl">
                   <div
-                    className="pointer-events-none absolute -right-8 -top-8 h-32 w-32 rounded-full opacity-[0.12] transition-transform duration-500 group-hover:scale-125"
+                    className="pointer-events-none absolute -right-8 -top-8 h-32 w-32 rounded-full opacity-[0.16] transition-transform duration-500 group-hover:scale-125"
                     style={{ background: m.accent }}
                   />
 
@@ -84,8 +84,8 @@ export function CronogramaManifestacion() {
                     </svg>
                   </div>
 
-                  <h3 className="relative mt-6 font-display text-2xl font-black text-cream">{m.name}</h3>
-                  <p className="relative mt-3 text-cream/65">{m.desc}</p>
+                  <h3 className="relative mt-6 font-display text-2xl font-black text-ink">{m.name}</h3>
+                  <p className="relative mt-3 text-ink/60">{m.desc}</p>
                 </div>
               </Reveal>
             ))}
