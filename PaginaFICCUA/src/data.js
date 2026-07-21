@@ -1,5 +1,4 @@
 import grupoFolclorico from "./assets/photos/grupo-folclorico.jpg";
-import guerrero from "./assets/photos/guerrero.jpg";
 import musico from "./assets/photos/musico.jpg";
 import danzaNoche from "./assets/photos/danza-noche.jpg";
 import garifuna from "./assets/photos/garifuna.jpg";
@@ -22,7 +21,6 @@ export const HERO_GALLERY = [
 // Sección 6 — Carrusel de fotos
 export const CAROUSEL = [
   { src: grupoFolclorico, title: "Danzas folclóricas", caption: "Trajes típicos y tradición viva en escena" },
-  { src: guerrero, title: "Raíces ancestrales", caption: "Cultura originaria y arte corporal" },
   { src: danzaNoche, title: "Danza bajo las luces", caption: "El folclor se enciende de noche" },
   { src: garifuna, title: "Herencia garífuna", caption: "Tambor y canto del Caribe centroamericano" },
   { src: pollera, title: "Color y movimiento", caption: "La pollera gira en cada compás" },

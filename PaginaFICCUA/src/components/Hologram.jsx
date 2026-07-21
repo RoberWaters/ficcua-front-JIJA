@@ -78,21 +78,12 @@ export function Hologram() {
       <div className="absolute inset-0 bg-gradient-to-b from-ink via-[#1B0E30] to-ink" />
       <div className="pointer-events-none absolute left-1/2 top-1/2 h-96 w-96 -translate-x-1/2 -translate-y-1/2 rounded-full bg-ficcua-blue/10 blur-3xl" />
 
-      <div className="relative mx-auto max-w-3xl px-6 text-center">
-        <Reveal className="mb-4">
-          <span className="text-xs font-black uppercase tracking-[0.25em] text-ficcua-blue">
-            Experiencia inmersiva
-          </span>
-          <h2 className="mt-3 font-display text-4xl font-black text-cream md:text-5xl">
-            Holograma 3D
-          </h2>
-        </Reveal>
-
+      <div className="relative w-full text-center">
         <Reveal delay={120}>
           <div
             ref={stageRef}
-            className="relative mx-auto mt-10 flex h-[420px] max-w-xl items-center justify-center"
-            style={{ perspective: "1200px" }}
+            className="relative mx-auto flex h-[640px] w-full items-center justify-center"
+            style={{ perspective: "1600px" }}
           >
             {/* rising particles */}
             <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
@@ -115,11 +106,11 @@ export function Hologram() {
             {/* pointer-tilted 3D panel */}
             <div
               ref={panelRef}
-              className="relative"
+              className="relative w-full"
               style={{ transformStyle: "preserve-3d", willChange: "transform" }}
             >
               <div
-                className="relative flex h-64 w-64 items-center justify-center rounded-3xl border border-[#8FD3FF]/40 sm:h-72 sm:w-72"
+                className="relative flex h-[520px] w-full items-center justify-center border-y border-[#8FD3FF]/40"
                 style={{
                   background:
                     "linear-gradient(150deg, rgba(143,211,255,0.16), rgba(232,179,62,0.10) 55%, rgba(209,59,94,0.14))",
@@ -132,7 +123,7 @@ export function Hologram() {
                   ref={logoRef}
                   src={logo}
                   alt="Proyección holográfica del logo FICCUA"
-                  className="w-[78%] opacity-90"
+                  className="w-[52%] max-w-3xl opacity-90"
                   style={{
                     filter: "drop-shadow(0 0 14px rgba(143,211,255,0.5))",
                     transform: "translate3d(0, 0, 40px)",
@@ -142,14 +133,14 @@ export function Hologram() {
 
                 {/* scanlines */}
                 <div
-                  className="pointer-events-none absolute inset-0 rounded-3xl opacity-40 mix-blend-screen"
+                  className="pointer-events-none absolute inset-0 opacity-40 mix-blend-screen"
                   style={{
                     backgroundImage:
                       "repeating-linear-gradient(0deg, rgba(143,211,255,0.35) 0px, rgba(143,211,255,0.35) 1px, transparent 2px, transparent 5px)",
                   }}
                 />
                 {/* sweeping sheen */}
-                <div className="pointer-events-none absolute inset-0 overflow-hidden rounded-3xl">
+                <div className="pointer-events-none absolute inset-0 overflow-hidden">
                   <div
                     className="absolute inset-x-0 h-1/3"
                     style={{
@@ -164,7 +155,7 @@ export function Hologram() {
 
             {/* glowing base */}
             <div
-              className="pointer-events-none absolute bottom-8 h-6 w-64 rounded-[100%]"
+              className="pointer-events-none absolute bottom-8 h-6 w-[36rem] max-w-[80%] rounded-[100%]"
               style={{
                 background:
                   "radial-gradient(closest-side, rgba(143,211,255,0.55), rgba(143,211,255,0) 75%)",
@@ -174,11 +165,6 @@ export function Hologram() {
           </div>
         </Reveal>
 
-        <Reveal delay={200}>
-          <p className="mx-auto mt-8 max-w-md text-cream/60">
-            Mueve el cursor sobre el emblema para inclinar la proyección en 3D.
-          </p>
-        </Reveal>
       </div>
 
       <style>{`

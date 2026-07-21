@@ -2,45 +2,78 @@ import { STATS } from "../data";
 import { AnimatedCounter } from "./AnimatedCounter";
 import { Reveal } from "./Reveal";
 
+// Thin line-art icons (one per stat), in the flat style of the reference band.
+const ICONS = [
+  // Universidades — birrete
+  () => (
+    <>
+      <path d="M12 4 2 9l10 5 10-5-10-5Z" />
+      <path d="M6 11.5V16c0 1.5 2.7 3 6 3s6-1.5 6-3v-4.5" />
+      <path d="M22 9v5" />
+    </>
+  ),
+  // Artistas — estrella
+  () => <path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8L3.5 9.7l5.9-.9L12 3.5Z" />,
+  // Manifestaciones — paleta
+  () => (
+    <>
+      <path d="M12 3a9 9 0 0 0 0 18c1 0 1.7-.8 1.7-1.7 0-.5-.2-.9-.5-1.2-.3-.3-.5-.7-.5-1.1 0-.9.8-1.7 1.7-1.7H16a5 5 0 0 0 5-5c0-3.9-4-7.3-9-7.3Z" />
+      <circle cx="7.5" cy="10.5" r="1" />
+      <circle cx="12" cy="7.5" r="1" />
+      <circle cx="16.5" cy="10.5" r="1" />
+    </>
+  ),
+  // Escenarios — ubicación
+  () => (
+    <>
+      <path d="M12 21s7-5.7 7-11a7 7 0 1 0-14 0c0 5.3 7 11 7 11Z" />
+      <circle cx="12" cy="10" r="2.5" />
+    </>
+  ),
+];
+
 export function Stats() {
   return (
-    <section id="contadores" className="relative scroll-mt-24 bg-cream py-24 text-ink">
+    <section id="contadores" className="relative scroll-mt-24 bg-cream py-12 text-ink">
       <div className="mx-auto max-w-7xl px-6">
-        <Reveal className="mb-16 text-center">
-          <span className="text-xs font-black uppercase tracking-[0.25em] text-ficcua-red">
-            El festival en cifras
-          </span>
-          <h2 className="mt-3 font-display text-4xl font-black md:text-5xl">
+        <Reveal className="mb-10 text-center">
+          <h2 className="font-display text-4xl font-black md:text-5xl">
             Un encuentro que crece
           </h2>
         </Reveal>
+      </div>
 
-        <div className="grid grid-cols-2 gap-6 lg:grid-cols-4">
-          {STATS.map((s, i) => (
-            <Reveal key={s.label} delay={i * 80}>
-              <div className="group relative h-full overflow-hidden rounded-3xl bg-white p-8 shadow-[0_10px_40px_-24px_rgba(21,10,36,0.5)] transition-[transform,box-shadow] duration-300 hover:-translate-y-2 hover:shadow-[0_20px_50px_-24px_rgba(21,10,36,0.55)]">
-                <span
-                  className="absolute inset-x-0 top-0 h-1.5"
-                  style={{ background: s.accent }}
-                />
-                <div
-                  className="font-display text-6xl font-black leading-none tracking-tight md:text-7xl"
-                  style={{ color: s.accent }}
+      {/* Flat, solid-color counter band — full-bleed, tiles flush together. */}
+      <div className="grid w-full grid-cols-2 lg:grid-cols-4">
+        {STATS.map((s, i) => (
+          <Reveal key={s.label} delay={i * 80}>
+            <div
+              className="group relative flex h-full flex-col justify-center px-7 py-9 text-cream transition-[filter] duration-300 hover:brightness-110 sm:px-9 sm:py-11"
+              style={{ background: s.accent }}
+            >
+              <div className="flex items-center gap-4">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.6"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="h-9 w-9 shrink-0 opacity-90 sm:h-11 sm:w-11"
+                  aria-hidden="true"
                 >
+                  {ICONS[i]()}
+                </svg>
+                <div className="font-display text-5xl font-black leading-none tracking-tight sm:text-6xl">
                   <AnimatedCounter value={s.value} suffix={s.suffix} />
                 </div>
-                <div className="mt-4 text-sm font-bold uppercase tracking-wide text-ink/55">
-                  {s.label}
-                </div>
-                {/* subtle corner flourish */}
-                <div
-                  className="pointer-events-none absolute -bottom-6 -right-6 h-20 w-20 rounded-full opacity-10 transition-transform duration-500 group-hover:scale-150"
-                  style={{ background: s.accent }}
-                />
               </div>
-            </Reveal>
-          ))}
-        </div>
+              <div className="mt-4 text-xs font-bold uppercase tracking-[0.18em] text-cream/70 sm:text-sm">
+                {s.label}
+              </div>
+            </div>
+          </Reveal>
+        ))}
       </div>
     </section>
   );

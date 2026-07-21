@@ -44,7 +44,7 @@ export function Carousel() {
   }, [index]);
 
   return (
-    <section id="galeria" className="relative scroll-mt-24 bg-cream py-24 text-ink">
+    <section id="galeria" className="relative scroll-mt-24 bg-cream py-12 text-ink">
       <div className="mx-auto mb-12 max-w-4xl px-6">
         <Reveal className="text-center">
           <span className="text-xs font-black uppercase tracking-[0.25em] text-ficcua-blue">
@@ -64,7 +64,10 @@ export function Carousel() {
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
         >
-          <div className="relative h-[clamp(460px,82vh,880px)] w-full">
+          <div
+            className="relative mx-auto"
+            style={{ width: "min(100%, calc(100vh * 3 / 2))", aspectRatio: "3 / 2" }}
+          >
             {CAROUSEL.map((item, i) => (
               <figure
                 key={item.src}
@@ -76,23 +79,11 @@ export function Carousel() {
                 }}
                 aria-hidden={i !== index}
               >
-                {/* Blurred fill of the same photo — hides letterbox gaps so the
-                    full (uncropped) image can sit on top without dead bars. */}
-                <div
-                  className="absolute inset-0"
-                  style={{
-                    backgroundImage: `url(${item.src})`,
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                    filter: "blur(32px) brightness(0.5)",
-                    transform: "scale(1.15)",
-                  }}
-                />
-                {/* Full photo — object-contain so nothing is ever cropped. */}
+                {/* Full-bleed photo — object-cover so it fills edge to edge. */}
                 <img
                   src={item.src}
                   alt={item.title}
-                  className="absolute inset-0 h-full w-full object-contain object-center"
+                  className="absolute inset-0 h-full w-full object-cover object-center"
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/10 to-transparent" />

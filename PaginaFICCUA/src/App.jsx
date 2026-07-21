@@ -6,7 +6,6 @@ import { Stats } from "./components/Stats";
 import { Carousel } from "./components/Carousel";
 import { Hologram } from "./components/Hologram";
 import { Countries } from "./components/Countries";
-import { Cintillo } from "./components/Cintillo";
 import { Footer } from "./components/Footer";
 
 export default function App() {
@@ -28,8 +27,6 @@ export default function App() {
         <Hologram />
         {/* 8 · Banderas de los 8 países */}
         <Countries />
-        {/* Cintillo de banderas en scroll infinito */}
-        <Cintillo />
       </main>
       <Footer />
     </div>
