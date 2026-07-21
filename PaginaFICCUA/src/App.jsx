@@ -7,6 +7,7 @@ import { Carousel } from "./components/Carousel";
 import { Hologram } from "./components/Hologram";
 import { Countries } from "./components/Countries";
 import { Footer } from "./components/Footer";
+import { Banda } from "./components/Banda";
 
 export default function App() {
   return (
@@ -29,6 +30,8 @@ export default function App() {
         <Countries />
       </main>
       <Footer />
+      {/* Banda decorativa abajo del todo de la página */}
+      <Banda />
     </div>
   );
 }

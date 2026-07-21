@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { HERO_GALLERY } from "../data";
-import { Confetti, PapelPicado } from "./Decor";
+import { Confetti } from "./Decor";
 
 export function Hero() {
   const [current, setCurrent] = useState(0);
@@ -35,7 +35,6 @@ export function Hero() {
         <div className="absolute inset-0 bg-gradient-to-r from-ink/80 via-transparent to-ink/40" />
       </div>
 
-      <PapelPicado className="absolute inset-x-0 top-0 z-20 opacity-80" />
       <Confetti count={44} className="z-10" />
 
       {/* Floating cultural shapes */}

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import logo from "../assets/logo-ficcua.png";
+import { Banda } from "./Banda";
 
 const LINKS = [
   { href: "#cronogramas", label: "Cronogramas" },
@@ -40,14 +41,17 @@ export function Navbar() {
   }, []);
 
   return (
-    <nav
-      className="fixed inset-x-0 top-0 z-50 transition-[background-color,backdrop-filter,box-shadow] duration-300"
+    <div
+      className="fixed inset-x-0 top-0 z-50 transition-[transform,opacity] duration-300"
       style={{
-        backgroundColor: scrolled ? "rgba(21,10,36,0.82)" : "transparent",
-        backdropFilter: scrolled ? "blur(12px)" : "none",
-        boxShadow: scrolled ? "0 10px 30px -18px rgba(0,0,0,0.8)" : "none",
+        transform: scrolled ? "translateY(-100%)" : "translateY(0)",
+        opacity: scrolled ? 0 : 1,
+        pointerEvents: scrolled ? "none" : "auto",
       }}
     >
+      {/* Banda decorativa arriba del todo — se oculta junto con el menú */}
+      <Banda />
+      <nav>
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3">
         <a href="#top" className="flex items-center gap-3">
           <img src={logo} alt="FICCUA" className="h-11 w-auto drop-shadow" />
@@ -120,6 +124,7 @@ export function Navbar() {
           ))}
         </div>
       </div>
-    </nav>
+      </nav>
+    </div>
   );
 }
