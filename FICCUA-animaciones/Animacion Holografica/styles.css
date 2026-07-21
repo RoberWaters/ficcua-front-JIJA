@@ -22,16 +22,17 @@ main {
   background-blend-mode: color-dodge;
 }
 
-/* Tarjeta contenedora exterior */
+/* Tarjeta contenedora exterior: es el elemento al que main.js aplica el tilt (rotationX/Y) */
 .logo-outer {
-  width: 320px;
-  height: 320px;
+  width: 100vw;
+  height: 600px;
   background: rgb(255, 246, 216) ;
-  border-radius: 3rem;
+  border-radius: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   box-shadow: 0 20px 40px rgba(245, 158, 11, 0.2);
+  /* Necesario para que las rotaciones 3D del hijo (.logo) se compongan con las de este contenedor */
   transform-style: preserve-3d;
 }
 
