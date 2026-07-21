@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { CRONOGRAMAS } from "../data";
 import { Reveal } from "./Reveal";
 
@@ -22,8 +23,8 @@ export function CronogramaLinks() {
         <div className="grid gap-7 md:grid-cols-2">
           {CRONOGRAMAS.map((c, i) => (
             <Reveal key={c.href} delay={i * 90}>
-              <a
-                href={c.href}
+              <Link
+                to={c.href}
                 className="group relative flex min-h-[280px] flex-col justify-between overflow-hidden rounded-3xl p-9 text-cream shadow-xl transition-[transform,box-shadow] duration-300 hover:-translate-y-2 hover:shadow-2xl active:scale-[0.985]"
                 style={{ background: c.tint }}
               >
@@ -43,7 +44,7 @@ export function CronogramaLinks() {
                   Entrar
                   <Arrow />
                 </div>
-              </a>
+              </Link>
             </Reveal>
           ))}
         </div>
