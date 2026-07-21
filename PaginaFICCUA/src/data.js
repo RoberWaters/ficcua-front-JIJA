@@ -30,10 +30,10 @@ export const CAROUSEL = [
 
 // Sección 5 — Contadores (valores placeholder, a conectar con datos reales)
 export const STATS = [
-  { value: 8, suffix: "", label: "Universidades", accent: "var(--color-ficcua-red)" },
-  { value: 640, suffix: "+", label: "Artistas", accent: "var(--color-ficcua-gold)" },
-  { value: 12, suffix: "", label: "Manifestaciones", accent: "var(--color-ficcua-green)" },
-  { value: 6, suffix: "", label: "Escenarios", accent: "var(--color-ficcua-blue)" },
+  { value: 12, suffix: "", label: "Universidades", accent: "var(--color-ficcua-red)" },
+  { value: 940, suffix: "+", label: "Artistas", accent: "var(--color-ficcua-gold)" },
+  { value: 6, suffix: "", label: "Manifestaciones", accent: "var(--color-ficcua-green)" },
+  { value: 10, suffix: "", label: "Escenarios", accent: "var(--color-ficcua-blue)" },
 ];
 
 // Sección 8 — Banderas de los 8 países (miembros de CSUCA / FICCUA).
