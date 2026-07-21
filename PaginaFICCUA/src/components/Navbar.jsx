@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import logo from "../assets/logo-ficcua.png";
-import { Banda } from "./Banda";
+import { CenefaBloques } from "./CenefaBloques";
 
 const LINKS = [
   { href: "#cronogramas", label: "Cronogramas" },
@@ -49,8 +49,8 @@ export function Navbar() {
         pointerEvents: scrolled ? "none" : "auto",
       }}
     >
-      {/* Banda decorativa arriba del todo — se oculta junto con el menú */}
-      <Banda />
+      {/* Cenefa decorativa arriba del todo — se oculta junto con el menú */}
+      <CenefaBloques />
       <nav>
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3">
         <a href="#top" className="flex items-center gap-3">
