@@ -1,10 +1,13 @@
+import { useEffect, useRef } from "react";
 import logo from "../assets/logo-ficcua.png";
 import { Reveal } from "./Reveal";
 
-// Placeholder for the future 3D/hologram viewer.
-// Built as a CSS-3D holographic projection: the logo floats on a translucent
-// panel that rotates in real 3D, with a sweeping sheen, scanlines, a glowing
-// base and rising particles.
+// Interactive 3D/hologram viewer.
+// The logo floats on a translucent panel that tilts in real 3D following the
+// pointer (with a parallax offset on the logo for depth), plus a sweeping
+// sheen, scanlines, a glowing base and rising particles. The tilt is driven by
+// a rAF lerp — targets are set on pointermove and eased toward each frame —
+// so it stays smooth without a heavy animation dependency.
 export function Hologram() {
   const particles = Array.from({ length: 18 }, (_, i) => ({
     left: (i * 5.5 + 6) % 100,
@@ -12,6 +15,63 @@ export function Hologram() {
     duration: 5 + (i % 4),
     size: 3 + (i % 3),
   }));
+
+  const stageRef = useRef(null);
+  const panelRef = useRef(null);
+  const logoRef = useRef(null);
+
+  useEffect(() => {
+    const stage = stageRef.current;
+    const panel = panelRef.current;
+    const logoEl = logoRef.current;
+    if (!stage || !panel || !logoEl) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    // target = where the pointer wants it, cur = eased current value
+    const target = { rx: 0, ry: 0, tx: 0, ty: 0 };
+    const cur = { rx: 0, ry: 0, tx: 0, ty: 0 };
+    const lerp = (a, b, t) => a + (b - a) * t;
+    let raf = 0;
+
+    const tick = () => {
+      cur.rx = lerp(cur.rx, target.rx, 0.12);
+      cur.ry = lerp(cur.ry, target.ry, 0.12);
+      cur.tx = lerp(cur.tx, target.tx, 0.12);
+      cur.ty = lerp(cur.ty, target.ty, 0.12);
+      panel.style.transform = `rotateX(${cur.rx}deg) rotateY(${cur.ry}deg)`;
+      logoEl.style.transform = `translate3d(${cur.tx}px, ${cur.ty}px, 40px)`;
+      raf = requestAnimationFrame(tick);
+    };
+
+    const onMove = (e) => {
+      const r = stage.getBoundingClientRect();
+      const px = (e.clientX - r.left) / r.width; // 0..1
+      const py = (e.clientY - r.top) / r.height; // 0..1
+      // Panel tilts (X-axis from vertical pointer, Y-axis from horizontal)
+      target.rx = 15 - 30 * py;
+      target.ry = -15 + 30 * px;
+      // Logo drifts the opposite way for a parallax sense of depth
+      target.tx = -30 + 60 * px;
+      target.ty = -30 + 60 * py;
+    };
+
+    const onLeave = () => {
+      target.rx = 0;
+      target.ry = 0;
+      target.tx = 0;
+      target.ty = 0;
+    };
+
+    stage.addEventListener("pointermove", onMove);
+    stage.addEventListener("pointerleave", onLeave);
+    raf = requestAnimationFrame(tick);
+
+    return () => {
+      cancelAnimationFrame(raf);
+      stage.removeEventListener("pointermove", onMove);
+      stage.removeEventListener("pointerleave", onLeave);
+    };
+  }, []);
 
   return (
     <section className="relative overflow-hidden py-28">
@@ -30,6 +90,7 @@ export function Hologram() {
 
         <Reveal delay={120}>
           <div
+            ref={stageRef}
             className="relative mx-auto mt-10 flex h-[420px] max-w-xl items-center justify-center"
             style={{ perspective: "1200px" }}
           >
@@ -51,10 +112,11 @@ export function Hologram() {
               ))}
             </div>
 
-            {/* rotating 3D panel */}
+            {/* pointer-tilted 3D panel */}
             <div
+              ref={panelRef}
               className="relative"
-              style={{ transformStyle: "preserve-3d", animation: "holo-spin 14s linear infinite" }}
+              style={{ transformStyle: "preserve-3d", willChange: "transform" }}
             >
               <div
                 className="relative flex h-64 w-64 items-center justify-center rounded-3xl border border-[#8FD3FF]/40 sm:h-72 sm:w-72"
@@ -67,10 +129,15 @@ export function Hologram() {
                 }}
               >
                 <img
+                  ref={logoRef}
                   src={logo}
                   alt="Proyección holográfica del logo FICCUA"
                   className="w-[78%] opacity-90"
-                  style={{ filter: "drop-shadow(0 0 14px rgba(143,211,255,0.5))" }}
+                  style={{
+                    filter: "drop-shadow(0 0 14px rgba(143,211,255,0.5))",
+                    transform: "translate3d(0, 0, 40px)",
+                    willChange: "transform",
+                  }}
                 />
 
                 {/* scanlines */}
@@ -109,8 +176,7 @@ export function Hologram() {
 
         <Reveal delay={200}>
           <p className="mx-auto mt-8 max-w-md text-cream/60">
-            Vista previa del visor 3D interactivo. Próximamente podrás explorar el emblema del
-            festival en holograma.
+            Mueve el cursor sobre el emblema para inclinar la proyección en 3D.
           </p>
         </Reveal>
       </div>
