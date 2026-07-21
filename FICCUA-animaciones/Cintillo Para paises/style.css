@@ -24,7 +24,7 @@ h1 {
 
 @keyframes scroll {
 	0%   { transform: translateX(0); }
-	100% { transform: translateX(-1500px); } /* -250px * 6 */
+	100% { transform: translateX(-2000px); } /* -250px * 8 */
 }
 
 .slider {
@@ -34,7 +34,7 @@ h1 {
 	margin: auto;
 	overflow: hidden;
 	position: relative;
-	width: 960px;
+	width: 100%;
 }
 
 .slider::before,
@@ -61,11 +61,14 @@ h1 {
 .slider .slide-track {
 	animation: scroll 40s linear infinite;
 	display: flex;
-	width: 3000px; /* 250px * 12 */
+	width: 4000px; /* 250px * 16 */
 }
 
 .slider .slide {
+	align-items: center;
+	display: flex;
 	height: 100px;
+	justify-content: center;
 	width: 250px;
 }
 
