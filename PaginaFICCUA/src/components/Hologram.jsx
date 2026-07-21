@@ -103,53 +103,34 @@ export function Hologram() {
               ))}
             </div>
 
-            {/* pointer-tilted 3D panel */}
+            {/* pointer-tilted floating logo (no panel) */}
             <div
               ref={panelRef}
-              className="relative w-full"
+              className="relative mx-auto w-[52%] max-w-3xl"
               style={{ transformStyle: "preserve-3d", willChange: "transform" }}
             >
-              <div
-                className="relative flex h-[520px] w-full items-center justify-center border-y border-[#8FD3FF]/40"
+              <img
+                ref={logoRef}
+                src={logo}
+                alt="Proyección holográfica del logo FICCUA"
+                className="w-full opacity-90"
                 style={{
-                  background:
-                    "linear-gradient(150deg, rgba(143,211,255,0.16), rgba(232,179,62,0.10) 55%, rgba(209,59,94,0.14))",
-                  boxShadow:
-                    "0 0 40px rgba(143,211,255,0.25), inset 0 0 40px rgba(143,211,255,0.12)",
-                  backdropFilter: "blur(2px)",
+                  filter: "drop-shadow(0 0 14px rgba(143,211,255,0.5))",
+                  transform: "translate3d(0, 0, 40px)",
+                  willChange: "transform",
                 }}
-              >
-                <img
-                  ref={logoRef}
-                  src={logo}
-                  alt="Proyección holográfica del logo FICCUA"
-                  className="w-[52%] max-w-3xl opacity-90"
-                  style={{
-                    filter: "drop-shadow(0 0 14px rgba(143,211,255,0.5))",
-                    transform: "translate3d(0, 0, 40px)",
-                    willChange: "transform",
-                  }}
-                />
+              />
 
-                {/* scanlines */}
+              {/* sweeping sheen — scoped to the logo box */}
+              <div className="pointer-events-none absolute inset-0 overflow-hidden">
                 <div
-                  className="pointer-events-none absolute inset-0 opacity-40 mix-blend-screen"
+                  className="absolute inset-x-0 h-1/3"
                   style={{
-                    backgroundImage:
-                      "repeating-linear-gradient(0deg, rgba(143,211,255,0.35) 0px, rgba(143,211,255,0.35) 1px, transparent 2px, transparent 5px)",
+                    background:
+                      "linear-gradient(180deg, transparent, rgba(255,255,255,0.35), transparent)",
+                    animation: "holo-scan 3.5s ease-in-out infinite",
                   }}
                 />
-                {/* sweeping sheen */}
-                <div className="pointer-events-none absolute inset-0 overflow-hidden">
-                  <div
-                    className="absolute inset-x-0 h-1/3"
-                    style={{
-                      background:
-                        "linear-gradient(180deg, transparent, rgba(255,255,255,0.35), transparent)",
-                      animation: "holo-scan 3.5s ease-in-out infinite",
-                    }}
-                  />
-                </div>
               </div>
             </div>
 
