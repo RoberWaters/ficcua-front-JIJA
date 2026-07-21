@@ -1,17 +1,36 @@
-import { HERO_IMG } from "../data";
+import { useEffect, useState } from "react";
+import { HERO_GALLERY } from "../data";
 import { Confetti, PapelPicado } from "./Decor";
 
 export function Hero() {
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduced || HERO_GALLERY.length <= 1) return;
+    const id = setInterval(() => {
+      setCurrent((i) => (i + 1) % HERO_GALLERY.length);
+    }, 4000);
+    return () => clearInterval(id);
+  }, []);
+
   return (
     <header id="top" className="relative flex min-h-[90vh] items-center overflow-hidden">
-      {/* Background photo with slow ken-burns drift */}
+      {/* Background gallery with crossfade + slow ken-burns drift */}
       <div className="absolute inset-0">
-        <img
-          src={HERO_IMG}
-          alt="Grupo folclórico en el festival FICCUA"
-          className="h-full w-full object-cover"
-          style={{ animation: "ken-burns 22s ease-in-out infinite alternate" }}
-        />
+        {HERO_GALLERY.map((src, i) => (
+          <img
+            key={src}
+            src={src}
+            alt=""
+            aria-hidden="true"
+            className="absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ease-in-out"
+            style={{
+              opacity: i === current ? 1 : 0,
+              animation: i === current ? "ken-burns 22s ease-in-out infinite alternate" : "none",
+            }}
+          />
+        ))}
         <div className="absolute inset-0 bg-gradient-to-b from-ink/85 via-ink/60 to-ink" />
         <div className="absolute inset-0 bg-gradient-to-r from-ink/80 via-transparent to-ink/40" />
       </div>
@@ -29,14 +48,6 @@ export function Hero() {
 
       <div className="relative z-20 mx-auto w-full max-w-7xl px-6 pb-20 pt-32">
         <div className="max-w-4xl">
-          <div
-            className="mb-7 inline-flex items-center gap-2.5 rounded-full border border-ficcua-gold/30 bg-ficcua-gold/10 px-5 py-2 text-sm font-bold tracking-wide text-ficcua-gold backdrop-blur-sm"
-            style={{ animation: "fade-in-up 0.7s var(--ease-out) both" }}
-          >
-            <span className="h-1.5 w-1.5 rounded-full bg-ficcua-gold" />
-            XIII Festival · Honduras · UNAH 2026
-          </div>
-
           <h1 className="font-display text-[clamp(3rem,9vw,7rem)] font-black leading-[0.9] tracking-tight">
             <span className="block overflow-hidden">
               <span className="block" style={{ animation: "rise 0.9s var(--ease-out) 0.05s both" }}>
@@ -65,7 +76,7 @@ export function Hero() {
             <a
               href="#cronogramas"
               className="rounded-full px-8 py-4 text-base font-bold text-cream shadow-2xl transition-transform duration-200 hover:-translate-y-1 active:scale-95"
-              style={{ background: "linear-gradient(135deg,#D13B5E,#E8843E)" }}
+              style={{ background: "#E8843E" }}
             >
               Ver cronogramas
             </a>

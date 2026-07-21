@@ -9,6 +9,16 @@ import danzaAfricana from "./assets/photos/danza-africana.jpg";
 // Hero background
 export { grupoFolclorico as HERO_IMG };
 
+// Hero — galería de fondo (solo fotos horizontales)
+export const HERO_GALLERY = [
+  grupoFolclorico,
+  danzaNoche,
+  garifuna,
+  pollera,
+  musico,
+  danzaAfricana,
+];
+
 // Sección 6 — Carrusel de fotos
 export const CAROUSEL = [
   { src: grupoFolclorico, title: "Danzas folclóricas", caption: "Trajes típicos y tradición viva en escena" },

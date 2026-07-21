@@ -52,7 +52,7 @@ export function Navbar() {
         <a href="#top" className="flex items-center gap-3">
           <img src={logo} alt="FICCUA" className="h-11 w-auto drop-shadow" />
           <span className="hidden font-display text-lg font-semibold tracking-tight text-cream sm:block">
-            FICCUA <span className="text-ficcua-gold">2026</span>
+            <span className="text-ficcua-gold">2026</span>
           </span>
         </a>
 
@@ -72,7 +72,7 @@ export function Navbar() {
           <a
             href="#cronogramas"
             className="rounded-full px-5 py-2 text-sm font-bold text-cream shadow-lg transition-transform duration-200 hover:-translate-y-0.5 active:scale-95"
-            style={{ background: "linear-gradient(135deg,#D13B5E,#E8843E)" }}
+            style={{ background: "#E8843E" }}
           >
             Ver programación
           </a>
