@@ -2,11 +2,12 @@ import { useEffect, useRef } from "react";
 import logo from "../assets/logo-ficcua.png";
 import { Reveal } from "./Reveal";
 
-// Interactive 3D logo viewer. The logo tilts in real 3D following the
-// pointer (with a parallax offset for depth), floating above a soft black
-// ground shadow, with rising particles for atmosphere. The tilt is driven by
-// a rAF lerp — targets are set on pointermove and eased toward each frame —
-// so it stays smooth without a heavy animation dependency.
+// Interactive 3D logo viewer. On desktop the logo tilts in real 3D following
+// the pointer (with a parallax offset for depth); on touch devices it drifts
+// on its own so the effect is always alive without asking for any sensor
+// permission. It floats above a soft black ground shadow, with rising
+// particles for atmosphere. The motion is driven by a rAF lerp — a target is
+// eased toward each frame — so it stays smooth without a heavy dependency.
 export function Hologram() {
   const particles = Array.from({ length: 18 }, (_, i) => ({
     left: (i * 5.5 + 6) % 100,
@@ -26,13 +27,26 @@ export function Hologram() {
     if (!stage || !panel || !logoEl) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-    // target = where the pointer wants it, cur = eased current value
+    // target = where the pointer/drift wants it, cur = eased current value
     const target = { rx: 0, ry: 0, tx: 0, ty: 0 };
     const cur = { rx: 0, ry: 0, tx: 0, ty: 0 };
     const lerp = (a, b, t) => a + (b - a) * t;
+    const isTouch = window.matchMedia("(pointer: coarse)").matches;
+    const start = performance.now();
     let raf = 0;
 
-    const tick = () => {
+    const tick = (now) => {
+      // Phones can't hover a pointer, so instead of asking for any sensor
+      // permission we let the logo drift on its own: two slow sine waves at
+      // different rates trace a gentle floating path. Always visible, never
+      // prompts the user. Desktop skips this and follows the pointer below.
+      if (isTouch) {
+        const t = (now - start) / 1000;
+        target.ry = Math.sin(t * 0.8) * 12;
+        target.rx = Math.sin(t * 0.6 + 1) * 8;
+        target.tx = Math.sin(t * 0.8) * 22;
+        target.ty = Math.sin(t * 0.6 + 1) * 14;
+      }
       cur.rx = lerp(cur.rx, target.rx, 0.12);
       cur.ry = lerp(cur.ry, target.ry, 0.12);
       cur.tx = lerp(cur.tx, target.tx, 0.12);
@@ -42,6 +56,7 @@ export function Hologram() {
       raf = requestAnimationFrame(tick);
     };
 
+    // ---- Desktop / mouse: follow the pointer ----
     const onMove = (e) => {
       const r = stage.getBoundingClientRect();
       const px = (e.clientX - r.left) / r.width; // 0..1
@@ -61,8 +76,13 @@ export function Hologram() {
       target.ty = 0;
     };
 
-    stage.addEventListener("pointermove", onMove);
-    stage.addEventListener("pointerleave", onLeave);
+    // Only the mouse follows the pointer; on touch the drift above owns the
+    // motion, so we don't attach these (a touch-drag would otherwise fight it).
+    if (!isTouch) {
+      stage.addEventListener("pointermove", onMove);
+      stage.addEventListener("pointerleave", onLeave);
+    }
+
     raf = requestAnimationFrame(tick);
 
     return () => {
