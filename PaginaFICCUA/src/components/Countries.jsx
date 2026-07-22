@@ -1,5 +1,6 @@
 import { COUNTRIES } from "../data";
 import { Reveal } from "./Reveal";
+import { SectionHeading } from "./ui/SectionHeading";
 
 // Duplicated once so the marquee track can loop seamlessly (translateX -50%).
 const STRIP = [...COUNTRIES, ...COUNTRIES];
@@ -13,17 +14,13 @@ export function Countries() {
       </div>
 
       <div className="relative">
-        <Reveal className="mb-14 px-6 text-center">
-          <span className="text-xs font-black uppercase tracking-[0.25em] text-ficcua-green">
-            Naciones participantes
-          </span>
-          <h2 className="mt-3 font-display text-4xl font-black text-ink md:text-5xl">
-            Ocho países, una sola fiesta
-          </h2>
-          <p className="mt-3 text-lg text-ink/55">
-            Centroamérica y el Caribe se encuentran en el arte.
-          </p>
-        </Reveal>
+        <SectionHeading
+          kicker="Naciones participantes"
+          kickerColor="var(--color-ficcua-green)"
+          title="Ocho países, una sola fiesta"
+          subtitle="Centroamérica y el Caribe se encuentran en el arte."
+          className="mb-14 px-6"
+        />
 
         {/* Cintillo — the flags drift steadily past. Pauses on hover. */}
         <Reveal

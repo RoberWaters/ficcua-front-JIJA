@@ -58,43 +58,57 @@ export const COUNTRIES = [
   { code: "do", name: "Rep. Dominicana", flag: flagDo },
 ];
 
-// Página — Cronograma por manifestación: las 6 disciplinas del festival
+// Página — Cronograma por manifestación: las 6 disciplinas del festival.
+// `pdf` queda en null a propósito — todavía no existe el PDF de programación
+// por disciplina; cuando exista, cada tarjeta abre el suyo en pestaña nueva.
 export const MANIFESTACIONES = [
   {
     key: "danza",
     name: "Danza",
     accent: "var(--color-ficcua-red)",
     desc: "Trajes típicos, coreografías folclóricas y ritmos que narran la historia de cada pueblo.",
+    foto: grupoFolclorico,
+    pdf: null,
   },
   {
     key: "teatro",
     name: "Teatro",
     accent: "var(--color-ficcua-gold)",
     desc: "Puestas en escena universitarias que exploran identidad, comedia y drama.",
+    foto: danzaNoche,
+    pdf: null,
   },
   {
     key: "musica",
     name: "Música",
     accent: "var(--color-ficcua-green)",
     desc: "Conciertos, coros y ensambles con instrumentos tradicionales y contemporáneos.",
+    foto: musico,
+    pdf: null,
   },
   {
     key: "artes-visuales",
     name: "Artes Visuales",
     accent: "var(--color-ficcua-blue)",
     desc: "Pintura, escultura y fotografía expuestas por artistas de toda la región.",
+    foto: pollera,
+    pdf: null,
   },
   {
     key: "cine",
     name: "Cine",
     accent: "#E8843E",
     desc: "Cortometrajes y muestras audiovisuales de estudiantes centroamericanos.",
+    foto: danzaAfricana,
+    pdf: null,
   },
   {
     key: "literatura",
     name: "Literatura",
     accent: "#6E43C6",
     desc: "Lecturas, recitales de poesía y presentaciones de obras literarias.",
+    foto: garifuna,
+    pdf: null,
   },
 ];
 

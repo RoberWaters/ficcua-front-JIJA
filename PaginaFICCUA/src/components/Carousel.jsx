@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { CAROUSEL } from "../data";
 import { Reveal } from "./Reveal";
+import { SectionHeading } from "./ui/SectionHeading";
 
 const INTERVAL = 5000;
 
@@ -46,15 +47,12 @@ export function Carousel() {
   return (
     <section id="galeria" className="relative scroll-mt-24 bg-cream py-12 text-ink">
       <div className="mx-auto mb-12 max-w-4xl px-6">
-        <Reveal className="text-center">
-          <span className="text-xs font-black uppercase tracking-[0.25em] text-ficcua-blue">
-            Galería
-          </span>
-          <h2 className="mt-3 font-display text-4xl font-black md:text-5xl">
-            Momentos del festival
-          </h2>
-          <p className="mt-3 text-lg text-ink/55">Un anticipo de la fiesta que nos espera.</p>
-        </Reveal>
+        <SectionHeading
+          kicker="Galería"
+          kickerColor="var(--color-ficcua-blue)"
+          title="Momentos del festival"
+          subtitle="Un anticipo de la fiesta que nos espera."
+        />
       </div>
 
       {/* Full-bleed photo stage — edge to edge, tall, images fitted to the frame. */}
@@ -86,16 +84,6 @@ export function Carousel() {
                   className="absolute inset-0 h-full w-full object-cover object-center"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/10 to-transparent" />
-                <figcaption className="absolute inset-x-0 bottom-0 mx-auto max-w-7xl p-6 sm:p-10">
-                  <span
-                    className="inline-block rounded-full px-4 py-1.5 text-sm font-black text-ink"
-                    style={{ background: "var(--color-ficcua-gold)" }}
-                  >
-                    {item.title}
-                  </span>
-                  <p className="mt-3 max-w-lg text-cream/85">{item.caption}</p>
-                </figcaption>
               </figure>
             ))}
 

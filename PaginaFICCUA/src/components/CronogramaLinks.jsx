@@ -1,6 +1,11 @@
 import { Link } from "react-router-dom";
-import { CRONOGRAMAS } from "../data";
+import { CRONOGRAMAS, HERO_GALLERY } from "../data";
+import { SectionHeading } from "./ui/SectionHeading";
+import { SectionDivider } from "./ui/SectionDivider";
 import { Reveal } from "./Reveal";
+
+// Photo pulled per card so the tint isn't a flat rectangle of color.
+const CARD_PHOTOS = [HERO_GALLERY[0], HERO_GALLERY[2]];
 
 function Arrow() {
   return (
@@ -12,42 +17,49 @@ function Arrow() {
 
 export function CronogramaLinks() {
   return (
-    <section id="cronogramas" className="relative scroll-mt-24 bg-cream py-24">
+    <section id="cronogramas" className="relative scroll-mt-24 bg-cream pb-24 pt-16">
       <div className="mx-auto max-w-7xl px-6">
-        <Reveal className="mb-14 text-center">
-          <h2 className="font-display text-4xl font-black text-ink md:text-5xl">
-            Consulta los cronogramas
-          </h2>
-        </Reveal>
+        <SectionHeading kicker="Programación" kickerColor="var(--color-ficcua-red)" title="Consulta los cronogramas" className="mb-14" />
+      </div>
 
-        <div className="grid gap-7 md:grid-cols-2">
-          {CRONOGRAMAS.map((c, i) => (
-            <Reveal key={c.href} delay={i * 90}>
-              <Link
-                to={c.href}
-                className="group relative flex min-h-[280px] flex-col justify-between overflow-hidden rounded-3xl p-9 text-cream shadow-xl transition-[transform,box-shadow] duration-300 hover:-translate-y-2 hover:shadow-2xl active:scale-[0.985]"
-                style={{ background: c.tint }}
-              >
-                {/* decorative rings */}
-                <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-white/10 transition-transform duration-500 group-hover:scale-125" />
-                <div className="pointer-events-none absolute bottom-8 right-14 h-20 w-20 rotate-45 rounded-2xl bg-white/10" />
+      {/* Full-bleed, edge to edge — the two cards read as one continuous band. */}
+      <div className="grid w-full sm:grid-cols-2">
+        {CRONOGRAMAS.map((c, i) => (
+          <Reveal key={c.href} variant="rise" delay={i * 90}>
+            <Link
+              to={c.href}
+              className="group relative flex min-h-[340px] flex-col justify-between overflow-hidden p-9 text-cream shadow-xl transition-[filter] duration-300 hover:brightness-105 sm:min-h-[400px] lg:p-14"
+            >
+              <img
+                src={CARD_PHOTOS[i % CARD_PHOTOS.length]}
+                alt=""
+                aria-hidden="true"
+                className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              <div className="absolute inset-0" style={{ background: c.tint, opacity: 0.88 }} />
+              <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent" />
 
-                <div className="relative">
-                  <p className="text-xs font-black uppercase tracking-[0.2em] text-cream/70">
-                    {c.kicker}
-                  </p>
-                  <h3 className="mt-2 font-display text-3xl font-black leading-tight">{c.title}</h3>
-                  <p className="mt-3 max-w-md text-cream/85">{c.desc}</p>
-                </div>
+              {/* decorative rings */}
+              <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-white/10 transition-transform duration-500 group-hover:scale-125" />
+              <div className="pointer-events-none absolute bottom-8 right-14 h-20 w-20 rotate-45 rounded-2xl bg-white/10" />
 
-                <div className="relative mt-7 flex w-fit items-center gap-2 rounded-full bg-white/20 px-5 py-3 font-bold backdrop-blur-sm transition-colors duration-200 group-hover:bg-white/30">
-                  Entrar
-                  <Arrow />
-                </div>
-              </Link>
-            </Reveal>
-          ))}
-        </div>
+              <div className="relative">
+                <p className="kicker text-cream/70">{c.kicker}</p>
+                <h3 className="mt-2 font-display text-3xl font-black leading-tight">{c.title}</h3>
+                <p className="mt-3 max-w-md text-cream/85">{c.desc}</p>
+              </div>
+
+              <div className="relative mt-7 flex w-fit items-center gap-2 rounded-full bg-white/20 px-5 py-3 font-bold backdrop-blur-sm transition-colors duration-200 group-hover:bg-white/30">
+                Entrar
+                <Arrow />
+              </div>
+            </Link>
+          </Reveal>
+        ))}
+      </div>
+
+      <div className="absolute inset-x-0 bottom-0 translate-y-px">
+        <SectionDivider fill="var(--color-ink-700)" />
       </div>
     </section>
   );

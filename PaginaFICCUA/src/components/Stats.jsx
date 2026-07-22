@@ -1,6 +1,8 @@
 import { STATS } from "../data";
 import { AnimatedCounter } from "./AnimatedCounter";
 import { Reveal } from "./Reveal";
+import { SectionHeading } from "./ui/SectionHeading";
+import { SectionDivider } from "./ui/SectionDivider";
 
 // Thin line-art icons (one per stat), in the flat style of the reference band.
 const ICONS = [
@@ -34,21 +36,24 @@ const ICONS = [
 
 export function Stats() {
   return (
-    <section id="contadores" className="relative scroll-mt-24 bg-cream py-12 text-ink">
+    <section id="contadores" className="relative scroll-mt-24 bg-ink-700 py-28 text-cream">
       <div className="mx-auto max-w-7xl px-6">
-        <Reveal className="mb-10 text-center">
-          <h2 className="font-display text-4xl font-black md:text-5xl">
-            Un encuentro que crece
-          </h2>
-        </Reveal>
+        <SectionHeading
+          kicker="El festival en números"
+          kickerColor="var(--color-ficcua-gold)"
+          title="Un encuentro que crece"
+          light
+          className="mb-10"
+        />
       </div>
 
-      {/* Solid-color counter tiles, rounded to match the cards elsewhere on the page. */}
-      <div className="mx-auto grid max-w-7xl grid-cols-2 gap-5 px-6 lg:grid-cols-4">
+      {/* Solid-color counter tiles — full-bleed, joined edge to edge, square
+          corners. Same "big rectangular button" language as the Cronograma cards. */}
+      <div className="grid w-full grid-cols-2 lg:grid-cols-4">
         {STATS.map((s, i) => (
           <Reveal key={s.label} delay={i * 80}>
             <div
-              className="group relative flex h-full flex-col justify-center rounded-3xl px-7 py-9 text-cream shadow-lg transition-[filter] duration-300 hover:brightness-110 sm:px-9 sm:py-11"
+              className="group relative flex h-full flex-col justify-center px-8 py-12 text-cream shadow-lg transition-[filter] duration-300 hover:brightness-110 sm:px-10 sm:py-16"
               style={{ background: s.accent }}
             >
               <div className="flex items-center gap-4">
@@ -74,6 +79,10 @@ export function Stats() {
             </div>
           </Reveal>
         ))}
+      </div>
+
+      <div className="absolute inset-x-0 bottom-0 translate-y-px">
+        <SectionDivider fill="var(--color-cream)" />
       </div>
     </section>
   );

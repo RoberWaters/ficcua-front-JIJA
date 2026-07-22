@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import logo from "../assets/logo-ficcua.png";
 import { Reveal } from "./Reveal";
+import { Kicker } from "./ui/Kicker";
+import { Button } from "./ui/Button";
 
 function BackArrow() {
   return (
@@ -15,12 +17,7 @@ function BackArrow() {
 // makes sense across the single-page sections of Home.
 export function PageHeader({ kicker, title, description }) {
   return (
-    <header className="relative overflow-hidden bg-cream pb-20 pt-8">
-      <div
-        className="absolute inset-0"
-        style={{ background: "radial-gradient(60% 55% at 50% 0%, #FFFDF7 0%, #FFF7EC 70%)" }}
-      />
-
+    <header className="relative overflow-hidden bg-surface-warm pb-20 pt-8">
       {/* Floating cultural shapes, same motif as the landing Hero */}
       <div className="pointer-events-none absolute inset-0" aria-hidden="true">
         <div className="animate-float-y absolute left-[6%] top-[18%] h-14 w-14 rounded-full border-2 border-ficcua-gold/40 bg-ficcua-gold/15" />
@@ -35,17 +32,14 @@ export function PageHeader({ kicker, title, description }) {
             <span className="text-ficcua-gold">2026</span>
           </span>
         </Link>
-        <Link
-          to="/"
-          className="group flex items-center gap-2 rounded-full border border-ink/15 bg-ink/5 px-5 py-2.5 text-sm font-bold text-ink backdrop-blur-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-ink/10 active:scale-95"
-        >
+        <Button to="/" variant="ghost" size="sm" className="group">
           <BackArrow />
           Volver al inicio
-        </Link>
+        </Button>
       </nav>
 
-      <Reveal className="relative mx-auto mt-16 max-w-4xl px-6 text-center">
-        <span className="text-xs font-black uppercase tracking-[0.25em] text-ficcua-gold">{kicker}</span>
+      <Reveal className="relative mx-auto mt-16 max-w-4xl px-6 text-center" variant="rise">
+        <Kicker>{kicker}</Kicker>
         <h1 className="mt-3 font-display text-[clamp(2.5rem,6vw,4.5rem)] font-black leading-[0.95] text-ink">
           {title}
         </h1>

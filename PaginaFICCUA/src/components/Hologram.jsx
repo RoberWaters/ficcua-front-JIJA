@@ -2,10 +2,9 @@ import { useEffect, useRef } from "react";
 import logo from "../assets/logo-ficcua.png";
 import { Reveal } from "./Reveal";
 
-// Interactive 3D/hologram viewer.
-// The logo floats on a translucent panel that tilts in real 3D following the
-// pointer (with a parallax offset on the logo for depth), plus a sweeping
-// sheen, scanlines, a glowing base and rising particles. The tilt is driven by
+// Interactive 3D logo viewer. The logo tilts in real 3D following the
+// pointer (with a parallax offset for depth), floating above a soft black
+// ground shadow, with rising particles for atmosphere. The tilt is driven by
 // a rAF lerp — targets are set on pointermove and eased toward each frame —
 // so it stays smooth without a heavy animation dependency.
 export function Hologram() {
@@ -74,8 +73,7 @@ export function Hologram() {
   }, []);
 
   return (
-    <section className="relative overflow-hidden py-28">
-      <div className="absolute inset-0 bg-gradient-to-b from-ink via-[#1B0E30] to-ink" />
+    <section className="relative overflow-hidden bg-cream py-28">
       <div className="pointer-events-none absolute left-1/2 top-1/2 h-96 w-96 -translate-x-1/2 -translate-y-1/2 rounded-full bg-ficcua-blue/10 blur-3xl" />
 
       <div className="relative w-full text-center">
@@ -106,40 +104,23 @@ export function Hologram() {
             {/* pointer-tilted floating logo (no panel) */}
             <div
               ref={panelRef}
-              className="relative mx-auto w-[52%] max-w-3xl"
+              className="relative mx-auto w-[62%] max-w-4xl"
               style={{ transformStyle: "preserve-3d", willChange: "transform" }}
             >
               <img
                 ref={logoRef}
                 src={logo}
-                alt="Proyección holográfica del logo FICCUA"
-                className="w-full opacity-90"
-                style={{
-                  filter: "drop-shadow(0 0 14px rgba(143,211,255,0.5))",
-                  transform: "translate3d(0, 0, 40px)",
-                  willChange: "transform",
-                }}
+                alt="Logotipo FICCUA en 3D"
+                className="w-full"
+                style={{ transform: "translate3d(0, 0, 40px)", willChange: "transform" }}
               />
-
-              {/* sweeping sheen — scoped to the logo box */}
-              <div className="pointer-events-none absolute inset-0 overflow-hidden">
-                <div
-                  className="absolute inset-x-0 h-1/3"
-                  style={{
-                    background:
-                      "linear-gradient(180deg, transparent, rgba(255,255,255,0.35), transparent)",
-                    animation: "holo-scan 3.5s ease-in-out infinite",
-                  }}
-                />
-              </div>
             </div>
 
-            {/* glowing base */}
+            {/* ground shadow — same width as the logo above it */}
             <div
-              className="pointer-events-none absolute bottom-8 h-6 w-[36rem] max-w-[80%] rounded-[100%]"
+              className="pointer-events-none absolute bottom-8 h-8 w-[62%] max-w-4xl rounded-[100%]"
               style={{
-                background:
-                  "radial-gradient(closest-side, rgba(143,211,255,0.55), rgba(143,211,255,0) 75%)",
+                background: "radial-gradient(closest-side, rgba(21,10,36,0.35), rgba(21,10,36,0) 75%)",
                 animation: "breathe 3.5s ease-in-out infinite",
               }}
             />

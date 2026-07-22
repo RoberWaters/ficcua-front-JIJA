@@ -7,12 +7,12 @@
   --color-ficcua-gold: #E8B33E;
   --color-ficcua-green: #4FA84E;
   --color-ficcua-blue: #2F57C6;
+  --color-ficcua-orange: #E8843E;
 
   --color-ink: #150A24;
   --color-ink-700: #241238;
   --color-ink-500: #3A2154;
   --color-cream: #FFF7EC;
-  --color-cream-200: #F6E9D6;
 
   --font-display: 'Bricolage Grotesque', ui-sans-serif, system-ui, sans-serif;
   --font-sans: 'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif;
@@ -23,6 +23,13 @@
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
   --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+
+  /* Shared surfaces — named so recurring backgrounds (radial cream wash,
+     raised dark panel) aren't hand-duplicated per component. */
+  --surface-warm: radial-gradient(60% 55% at 50% 0%, #FFFDF7 0%, #FFF7EC 70%);
+  --surface-ink-raised: linear-gradient(180deg, #241238 0%, #1B0E30 100%);
+  --surface-sunset: linear-gradient(135deg, #D13B5E 0%, #E8843E 100%);
+  --surface-dusk: linear-gradient(135deg, #2F57C6 0%, #6E43C6 100%);
 }
 
 /* ─── Base ───────────────────────────────────────────────────────────────── */
@@ -66,6 +73,38 @@ body {
 /* ─── Utility helpers ────────────────────────────────────────────────────── */
 .font-display { font-family: var(--font-display); }
 
+.bg-surface-warm       { background: var(--surface-warm); }
+.bg-surface-ink-raised { background: var(--surface-ink-raised); }
+.bg-surface-sunset     { background: var(--surface-sunset); }
+.bg-surface-dusk       { background: var(--surface-dusk); }
+
+/* Editorial type scale — used for section/hero titles instead of one-off
+   text-4xl/text-5xl clamp combos per component. */
+.text-display-1 {
+  font-family: var(--font-display);
+  font-weight: 900;
+  line-height: 0.9;
+  letter-spacing: -0.01em;
+  font-size: clamp(2.75rem, 8vw, 6.5rem);
+}
+.text-display-2 {
+  font-family: var(--font-display);
+  font-weight: 900;
+  line-height: 0.98;
+  letter-spacing: -0.01em;
+  font-size: clamp(2.1rem, 4.4vw, 3.5rem);
+}
+
+/* The eyebrow label repeated ad hoc across every section (Hero, Stats,
+   Carousel, Countries, PageHeader) — kept as a global utility since it's
+   pure typography, no layout, same as .font-display above. */
+.kicker {
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  font-size: 0.72rem;
+}
+
 .text-gradient-warm {
   background: linear-gradient(96deg, var(--color-ficcua-gold), #F6C86B, var(--color-ficcua-red));
   -webkit-background-clip: text;
@@ -78,17 +117,6 @@ body {
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-}
-
-/* Reveal-on-scroll: a clean opacity fade only — no vertical movement, so nothing
-   "travels" up the page as you scroll. Kept subtle and quick. */
-.reveal {
-  opacity: 0;
-  transition: opacity 0.55s var(--ease-out);
-  will-change: opacity;
-}
-.reveal.is-visible {
-  opacity: 1;
 }
 
 /* ─── Keyframes ──────────────────────────────────────────────────────────── */
@@ -113,10 +141,6 @@ body {
 @keyframes holo-spin {
   0%   { transform: rotateY(0deg); }
   100% { transform: rotateY(360deg); }
-}
-@keyframes holo-scan {
-  0%   { transform: translateY(-100%); }
-  100% { transform: translateY(220%); }
 }
 @keyframes shimmer {
   0%   { background-position: -200% 0; }
@@ -149,5 +173,4 @@ body {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-  .reveal { opacity: 1; transform: none; }
 }

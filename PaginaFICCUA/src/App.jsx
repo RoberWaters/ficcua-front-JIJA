@@ -5,12 +5,21 @@ import { CronogramaManifestacion } from "./pages/CronogramaManifestacion";
 import { NotFound } from "./pages/NotFound";
 
 // Client-side navigation keeps scroll position by default — reset it on every
-// route change so a new page always opens at the top.
+// route change so a new page always opens at the top. When the destination
+// carries a hash (footer links back into a Home section, e.g. "/#galeria"),
+// scroll to that section instead of overriding it back to the top.
 function ScrollToTop() {
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
   useEffect(() => {
+    if (hash) {
+      const el = document.querySelector(hash);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+        return;
+      }
+    }
     window.scrollTo(0, 0);
-  }, [pathname]);
+  }, [pathname, hash]);
   return null;
 }
 
