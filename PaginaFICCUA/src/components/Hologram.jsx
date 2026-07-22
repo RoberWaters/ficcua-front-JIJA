@@ -80,7 +80,7 @@ export function Hologram() {
         <Reveal delay={120}>
           <div
             ref={stageRef}
-            className="relative mx-auto flex h-[640px] w-full items-center justify-center"
+            className="relative mx-auto flex h-[420px] w-full items-center justify-center sm:h-[520px] lg:h-[640px]"
             style={{ perspective: "1600px" }}
           >
             {/* rising particles */}
@@ -104,7 +104,7 @@ export function Hologram() {
             {/* pointer-tilted floating logo (no panel) */}
             <div
               ref={panelRef}
-              className="relative mx-auto w-[62%] max-w-4xl"
+              className="relative mx-auto w-[80%] max-w-4xl sm:w-[70%] lg:w-[62%]"
               style={{ transformStyle: "preserve-3d", willChange: "transform" }}
             >
               <img
@@ -118,7 +118,7 @@ export function Hologram() {
 
             {/* ground shadow — same width as the logo above it */}
             <div
-              className="pointer-events-none absolute bottom-8 h-8 w-[62%] max-w-4xl rounded-[100%]"
+              className="pointer-events-none absolute bottom-8 h-8 w-[80%] max-w-4xl rounded-[100%] sm:w-[70%] lg:w-[62%]"
               style={{
                 background: "radial-gradient(closest-side, rgba(21,10,36,0.35), rgba(21,10,36,0) 75%)",
                 animation: "breathe 3.5s ease-in-out infinite",

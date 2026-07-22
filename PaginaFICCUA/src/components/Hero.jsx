@@ -19,7 +19,7 @@ export function Hero() {
   }, [reduceMotion]);
 
   return (
-    <header id="top" className="relative flex min-h-[92vh] flex-col overflow-hidden pt-24 sm:pt-28">
+    <header id="top" className="relative flex min-h-[92svh] flex-col overflow-hidden pt-24 sm:pt-28">
       {/* Atmospheric background gallery — crossfade + slow ken-burns drift */}
       <div className="absolute inset-0">
         {HERO_GALLERY.map((src, i) => (
@@ -50,7 +50,7 @@ export function Hero() {
         <div className="animate-float-y absolute bottom-[30%] left-[3%] h-14 w-14 rounded-full border-2 border-ficcua-blue/40 bg-ficcua-blue/10" style={{ animationDelay: "0.8s" }} />
       </div>
 
-      <div className="relative z-20 mx-auto grid w-full max-w-7xl flex-1 items-center gap-14 px-6 py-10 lg:grid-cols-12 lg:gap-10">
+      <div className="relative z-20 mx-auto grid w-full max-w-7xl flex-1 items-center gap-10 px-6 py-10 sm:gap-14 lg:grid-cols-12 lg:gap-10">
         {/* Editorial text column */}
         <div className="lg:col-span-6">
           <div style={{ animation: "fade-in-up 0.7s var(--ease-out) both" }}>

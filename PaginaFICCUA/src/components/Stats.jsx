@@ -53,10 +53,10 @@ export function Stats() {
         {STATS.map((s, i) => (
           <Reveal key={s.label} delay={i * 80}>
             <div
-              className="group relative flex h-full flex-col justify-center px-8 py-12 text-cream shadow-lg transition-[filter] duration-300 hover:brightness-110 sm:px-10 sm:py-16"
+              className="group relative flex h-full flex-col justify-center px-5 py-10 text-cream shadow-lg transition-[filter] duration-300 hover:brightness-110 sm:px-10 sm:py-16"
               style={{ background: s.accent }}
             >
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-2.5 sm:gap-4">
                 <svg
                   viewBox="0 0 24 24"
                   fill="none"
@@ -64,16 +64,16 @@ export function Stats() {
                   strokeWidth="1.6"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  className="h-9 w-9 shrink-0 opacity-90 sm:h-11 sm:w-11"
+                  className="h-7 w-7 shrink-0 opacity-90 sm:h-10 sm:w-10 lg:h-11 lg:w-11"
                   aria-hidden="true"
                 >
                   {ICONS[i]()}
                 </svg>
-                <div className="font-display text-5xl font-black leading-none tracking-tight sm:text-6xl">
+                <div className="font-display text-4xl font-black leading-none tracking-tight sm:text-5xl lg:text-6xl">
                   <AnimatedCounter value={s.value} suffix={s.suffix} />
                 </div>
               </div>
-              <div className="mt-4 text-xs font-bold uppercase tracking-[0.18em] text-cream/70 sm:text-sm">
+              <div className="mt-3 text-[0.7rem] font-bold uppercase tracking-[0.16em] text-cream/70 sm:mt-4 sm:text-sm sm:tracking-[0.18em]">
                 {s.label}
               </div>
             </div>
