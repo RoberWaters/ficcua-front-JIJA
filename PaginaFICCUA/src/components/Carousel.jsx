@@ -62,10 +62,7 @@ export function Carousel() {
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
         >
-          <div
-            className="relative mx-auto"
-            style={{ width: "100%", height: "100dvh" }}
-          >
+          <div className="relative mx-auto h-[68svh] w-full sm:h-[78vh] lg:h-[86vh]">
             {CAROUSEL.map((item, i) => (
               <figure
                 key={item.src}
