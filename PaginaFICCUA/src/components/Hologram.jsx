@@ -73,7 +73,7 @@ export function Hologram() {
   }, []);
 
   return (
-    <section className="relative overflow-hidden bg-cream py-28">
+    <section className="relative overflow-hidden bg-cream py-6 sm:py-10">
       <div className="pointer-events-none absolute left-1/2 top-1/2 h-96 w-96 -translate-x-1/2 -translate-y-1/2 rounded-full bg-ficcua-blue/10 blur-3xl" />
 
       <div className="relative w-full text-center">

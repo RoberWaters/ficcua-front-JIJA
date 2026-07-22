@@ -36,7 +36,7 @@ const ICONS = [
 
 export function Stats() {
   return (
-    <section id="contadores" className="relative scroll-mt-24 bg-ink-700 py-28 text-cream">
+    <section id="contadores" className="relative scroll-mt-24 bg-ink-700 pt-12 pb-32 text-cream sm:pt-16 sm:pb-40">
       <div className="mx-auto max-w-7xl px-6">
         <SectionHeading
           kicker="El festival en números"
