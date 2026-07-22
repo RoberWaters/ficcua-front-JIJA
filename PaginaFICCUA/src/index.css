@@ -130,8 +130,8 @@ body {
   50%      { transform: translateY(-16px) rotate(-5deg); }
 }
 @keyframes confetti-fall {
-  0%   { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
-  100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+  0%   { transform: translateY(-10cqh) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(110cqh) rotate(720deg); opacity: 0; }
 }
 @keyframes spin-fwd { to { transform: rotate(360deg); } }
 @keyframes spin-rev { to { transform: rotate(-360deg); } }

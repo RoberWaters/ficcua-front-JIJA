@@ -94,7 +94,7 @@ export function Hero() {
             <div className="absolute inset-x-8 inset-y-2 -rotate-3 overflow-hidden rounded-[2rem] ring-4 ring-cream/10 shadow-2xl">
               <img src={HERO_GALLERY[1]} alt="Danza bajo las luces del festival" className="h-full w-full object-cover" />
             </div>
-            <div className="absolute -bottom-4 -left-4 h-36 w-36 rotate-6 overflow-hidden rounded-2xl ring-4 ring-cream/15 shadow-2xl sm:h-44 sm:w-44">
+            <div className="absolute bottom-8 -left-4 h-36 w-36 rotate-6 overflow-hidden rounded-2xl ring-4 ring-cream/15 shadow-2xl sm:h-44 sm:w-44">
               <img src={HERO_GALLERY[3]} alt="Pollera en movimiento" className="h-full w-full object-cover" />
             </div>
           </div>

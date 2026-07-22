@@ -64,7 +64,7 @@ export function Carousel() {
         >
           <div
             className="relative mx-auto"
-            style={{ width: "100%", aspectRatio: "3 / 2" }}
+            style={{ width: "100%", height: "100dvh" }}
           >
             {CAROUSEL.map((item, i) => (
               <figure
@@ -77,11 +77,13 @@ export function Carousel() {
                 }}
                 aria-hidden={i !== index}
               >
-                {/* Full-bleed photo — object-cover so it fills edge to edge. */}
+                {/* Full-bleed photo — object-cover so it fills edge to edge.
+                    object-position per-image (default center) keeps faces in frame. */}
                 <img
                   src={item.src}
                   alt={item.title}
-                  className="absolute inset-0 h-full w-full object-cover object-center"
+                  className="absolute inset-0 h-full w-full object-cover"
+                  style={{ objectPosition: item.position || "center" }}
                   loading="lazy"
                 />
               </figure>

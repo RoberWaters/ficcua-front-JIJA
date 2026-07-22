@@ -10,7 +10,7 @@ export function ClosingCTA() {
   return (
     <section className="relative overflow-hidden bg-ink py-24 text-cream">
       <div className="absolute inset-0" style={{ background: "var(--surface-dusk)", opacity: 0.18 }} />
-      <Confetti count={22} />
+      <Confetti count={44} />
 
       <div className="relative mx-auto max-w-3xl px-6 text-center">
         <Reveal variant="rise">
