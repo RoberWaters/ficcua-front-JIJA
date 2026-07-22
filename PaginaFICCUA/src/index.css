@@ -29,7 +29,7 @@
      raised dark panel) aren't hand-duplicated per component. */
   --surface-warm: radial-gradient(60% 55% at 50% 0%, #FFFDF7 0%, #FFF7EC 70%);
   --surface-ink-raised: linear-gradient(180deg, #241238 0%, #1B0E30 100%);
-  --surface-sunset: linear-gradient(135deg, #D13B5E 0%, #E8843E 100%);
+  --surface-sunset: linear-gradient(135deg, #E8B33E 0%, #4FA84E 100%);
   --surface-dusk: linear-gradient(135deg, #2F57C6 0%, #6E43C6 100%);
 }
 
@@ -107,7 +107,7 @@ body {
 }
 
 .text-gradient-warm {
-  background: linear-gradient(96deg, var(--color-ficcua-gold), #F6C86B, var(--color-ficcua-red));
+  background: linear-gradient(96deg, var(--color-ficcua-gold), #F6C86B, var(--color-ficcua-green));
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;

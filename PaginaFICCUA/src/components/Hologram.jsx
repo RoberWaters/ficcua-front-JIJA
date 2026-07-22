@@ -73,14 +73,14 @@ export function Hologram() {
   }, []);
 
   return (
-    <section className="relative overflow-hidden bg-cream py-6 sm:py-10">
+    <section className="relative flex h-screen flex-col items-center justify-center overflow-hidden bg-cream">
       <div className="pointer-events-none absolute left-1/2 top-1/2 h-96 w-96 -translate-x-1/2 -translate-y-1/2 rounded-full bg-ficcua-blue/10 blur-3xl" />
 
       <div className="relative w-full text-center">
         <Reveal delay={120}>
           <div
             ref={stageRef}
-            className="relative mx-auto flex h-[640px] w-full items-center justify-center"
+            className="relative mx-auto flex h-160 w-full items-center justify-center"
             style={{ perspective: "1600px" }}
           >
             {/* rising particles */}

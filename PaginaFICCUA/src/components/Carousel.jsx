@@ -45,7 +45,7 @@ export function Carousel() {
   }, [index]);
 
   return (
-    <section id="galeria" className="relative scroll-mt-24 bg-cream py-12 text-ink">
+    <section id="galeria" className="relative flex min-h-screen scroll-mt-24 flex-col justify-center bg-cream py-12 text-ink">
       <div className="mx-auto mb-12 max-w-4xl px-6">
         <SectionHeading
           kicker="Galería"

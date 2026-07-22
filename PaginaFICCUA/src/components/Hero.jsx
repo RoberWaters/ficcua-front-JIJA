@@ -19,7 +19,7 @@ export function Hero() {
   }, [reduceMotion]);
 
   return (
-    <header id="top" className="relative flex min-h-[92vh] flex-col overflow-hidden pt-24 sm:pt-28">
+    <header id="top" className="relative flex min-h-screen flex-col overflow-hidden pt-24 sm:pt-28">
       {/* Atmospheric background gallery — crossfade + slow ken-burns drift */}
       <div className="absolute inset-0">
         {HERO_GALLERY.map((src, i) => (
@@ -35,8 +35,8 @@ export function Hero() {
             }}
           />
         ))}
-        <div className="absolute inset-0 bg-gradient-to-b from-ink/90 via-ink/80 to-ink" />
-        <div className="absolute inset-0 bg-gradient-to-r from-ink/85 via-ink/25 to-ink/65" />
+        <div className="absolute inset-0 bg-gradient-to-b from-ink/70 via-ink/55 to-ink" />
+        <div className="absolute inset-0 bg-gradient-to-r from-ink/60 via-ink/10 to-ink/40" />
         {/* Clean dissolve of the photo into solid black at the bottom edge */}
         <div className="absolute inset-x-0 bottom-0 h-72 bg-gradient-to-b from-transparent to-ink" />
       </div>
@@ -50,9 +50,9 @@ export function Hero() {
         <div className="animate-float-y absolute bottom-[30%] left-[3%] h-14 w-14 rounded-full border-2 border-ficcua-blue/40 bg-ficcua-blue/10" style={{ animationDelay: "0.8s" }} />
       </div>
 
-      <div className="relative z-20 mx-auto grid w-full max-w-7xl flex-1 items-center gap-14 px-6 py-10 lg:grid-cols-12 lg:gap-10">
+      <div className="relative z-30 mx-auto flex w-full max-w-4xl flex-1 flex-col items-center justify-center gap-14 px-6 py-10 text-center">
         {/* Editorial text column */}
-        <div className="lg:col-span-6">
+        <div>
           <div style={{ animation: "fade-in-up 0.7s var(--ease-out) both" }}>
             <Kicker color="var(--color-ficcua-gold)">Edición 2026 · Honduras</Kicker>
           </div>
@@ -60,43 +60,32 @@ export function Hero() {
           <h1 className="mt-5 text-display-1 text-cream">
             <span className="block overflow-hidden">
               <span className="block" style={{ animation: "rise 0.9s var(--ease-out) 0.05s both" }}>
-                Festival
+                Festival Interuniversitario
               </span>
             </span>
             <span className="block overflow-hidden">
               <span
-                className="text-gradient-warm block"
+                className="text-gradient-warm block whitespace-nowrap"
                 style={{
+                  fontSize: "min(3.6vw, 2.25rem)",
                   backgroundSize: "200% auto",
                   animation: "rise 0.9s var(--ease-out) 0.18s both, gradient-drift 5s ease-in-out 1.1s infinite",
                 }}
               >
-                Internacional
+                Centroamericano de Cultura y Arte
               </span>
             </span>
           </h1>
 
-          <p className="mt-6 max-w-md text-lg text-cream/70" style={{ animation: "fade-in-up 0.8s var(--ease-out) 0.3s both" }}>
+          <p className="mx-auto mt-6 max-w-md text-lg text-cream/70" style={{ animation: "fade-in-up 0.8s var(--ease-out) 0.3s both" }}>
             Centroamérica y el Caribe se reúnen en danza, teatro, música, artes visuales, cine y literatura.
           </p>
 
-          <div className="mt-9 flex flex-wrap gap-4" style={{ animation: "fade-in-up 0.8s var(--ease-out) 0.4s both" }}>
+          <div className="mt-9 flex flex-wrap justify-center gap-4" style={{ animation: "fade-in-up 0.8s var(--ease-out) 0.4s both" }}>
             <Button href="#cronogramas">Ver cronogramas</Button>
             <Button href="#galeria" variant="secondary">
               Explorar galería
             </Button>
-          </div>
-        </div>
-
-        {/* Photo collage column — poster-style layered frames instead of a flat rectangle */}
-        <div className="relative lg:col-span-6" style={{ animation: "fade-in-up 1s var(--ease-out) 0.35s both" }}>
-          <div className="relative mx-auto aspect-[4/5] w-full max-w-md">
-            <div className="absolute inset-x-8 inset-y-2 -rotate-3 overflow-hidden rounded-[2rem] ring-4 ring-cream/10 shadow-2xl">
-              <img src={HERO_GALLERY[1]} alt="Danza bajo las luces del festival" className="h-full w-full object-cover" />
-            </div>
-            <div className="absolute -bottom-4 -left-4 h-36 w-36 rotate-6 overflow-hidden rounded-2xl ring-4 ring-cream/15 shadow-2xl sm:h-44 sm:w-44">
-              <img src={HERO_GALLERY[3]} alt="Pollera en movimiento" className="h-full w-full object-cover" />
-            </div>
           </div>
         </div>
       </div>

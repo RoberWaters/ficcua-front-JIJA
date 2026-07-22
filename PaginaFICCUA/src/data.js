@@ -33,7 +33,7 @@ export const STATS = [
   { value: 12, suffix: "", label: "Universidades", accent: "var(--color-ficcua-red)" },
   { value: 940, suffix: "+", label: "Artistas", accent: "var(--color-ficcua-gold)" },
   { value: 6, suffix: "", label: "Manifestaciones", accent: "var(--color-ficcua-green)" },
-  { value: 10, suffix: "", label: "Escenarios", accent: "var(--color-ficcua-blue)" },
+  { value: 11, suffix: "", label: "Escenarios", accent: "var(--color-ficcua-blue)" },
 ];
 
 // Sección 8 — Banderas de los 8 países (miembros de CSUCA / FICCUA).
@@ -55,7 +55,7 @@ export const COUNTRIES = [
   { code: "sv", name: "El Salvador", flag: flagSv },
   { code: "ni", name: "Nicaragua", flag: flagNi },
   { code: "cu", name: "Cuba", flag: flagCu },
-  { code: "do", name: "Rep. Dominicana", flag: flagDo },
+  { code: "do", name: "República Dominicana", flag: flagDo },
 ];
 
 // Página — Cronograma por manifestación: las 6 disciplinas del festival.
