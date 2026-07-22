@@ -7,14 +7,17 @@ export function Confetti({ count = 40, className = "" }) {
   const pieces = Array.from({ length: count }, (_, i) => ({
     color: PALETTE[i % PALETTE.length],
     size: 5 + (i % 6) * 1.4,
-    left: (i * 2.37) % 100,
+    // Golden-angle step so pieces spread evenly across the full 0–100% width
+    // regardless of count. (i * 2.37 only reached ~50% at count 22, leaving the
+    // right half of the band empty.)
+    left: (i * 61.803) % 100,
     delay: (i * 0.19) % 6,
     duration: 5 + (i % 5) * 0.8,
     shape: i % 3,
   }));
 
   return (
-    <div className={`pointer-events-none absolute inset-0 overflow-hidden ${className}`} aria-hidden="true">
+    <div className={`pointer-events-none absolute inset-0 overflow-hidden ${className}`} aria-hidden="true" style={{ containerType: "size" }}>
       {pieces.map((p, i) => (
         <span
           key={i}

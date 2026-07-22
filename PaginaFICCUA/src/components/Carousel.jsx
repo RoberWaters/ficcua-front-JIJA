@@ -62,10 +62,7 @@ export function Carousel() {
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
         >
-          <div
-            className="relative mx-auto"
-            style={{ width: "100%", aspectRatio: "3 / 2" }}
-          >
+          <div className="relative mx-auto h-[68svh] w-full sm:h-[78vh] lg:h-[86vh]">
             {CAROUSEL.map((item, i) => (
               <figure
                 key={item.src}
@@ -77,11 +74,13 @@ export function Carousel() {
                 }}
                 aria-hidden={i !== index}
               >
-                {/* Full-bleed photo — object-cover so it fills edge to edge. */}
+                {/* Full-bleed photo — object-cover so it fills edge to edge.
+                    object-position per-image (default center) keeps faces in frame. */}
                 <img
                   src={item.src}
                   alt={item.title}
-                  className="absolute inset-0 h-full w-full object-cover object-center"
+                  className="absolute inset-0 h-full w-full object-cover"
+                  style={{ objectPosition: item.position || "center" }}
                   loading="lazy"
                 />
               </figure>

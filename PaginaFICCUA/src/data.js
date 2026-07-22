@@ -25,7 +25,9 @@ export const CAROUSEL = [
   { src: garifuna, title: "Herencia garífuna", caption: "Tambor y canto del Caribe centroamericano" },
   { src: pollera, title: "Color y movimiento", caption: "La pollera gira en cada compás" },
   { src: musico, title: "Música en vivo", caption: "Voces y cuerdas de la región" },
-  { src: danzaAfricana, title: "Ritmo y raíz afro", caption: "Energía, telas y percusión" },
+  // Los rostros están en la franja superior; anclamos el recorte hacia arriba
+  // para que no se corten las caras en pantallas anchas (crop vertical).
+  { src: danzaAfricana, title: "Ritmo y raíz afro", caption: "Energía, telas y percusión", position: "50% 20%" },
 ];
 
 // Sección 5 — Contadores (valores placeholder, a conectar con datos reales)
