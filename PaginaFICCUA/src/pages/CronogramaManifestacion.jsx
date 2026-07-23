@@ -43,7 +43,7 @@ export function CronogramaManifestacion() {
       <PageHeader
         kicker="Cronograma por manifestación"
         title="Elige tu manifestación artística"
-        description="Danza, teatro, música, artes visuales, cine y literatura — descubre la programación de cada disciplina del festival."
+        description="Danza, teatro, música, artes visuales, cinematografía y literatura — descubre la programación de cada disciplina del festival."
       />
 
       {/* 3 columnas × 2 filas, fotos de fondo — mismo lenguaje que las tarjetas de Cronogramas en el landing */}

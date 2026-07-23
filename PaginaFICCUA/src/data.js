@@ -97,8 +97,8 @@ export const MANIFESTACIONES = [
     pdf: null,
   },
   {
-    key: "cine",
-    name: "Cine",
+    key: "cinematografia",
+    name: "Cinematografía",
     accent: "#E8843E",
     desc: "Cortometrajes y muestras audiovisuales de estudiantes centroamericanos.",
     foto: danzaAfricana,
@@ -114,10 +114,12 @@ export const MANIFESTACIONES = [
   },
 ];
 
-// Secciones 2 y 3 — enlaces a otras páginas
+// Secciones 2 y 3 — Cronograma General y Componente Académico abren un PDF
+// directo (`pdf: null` hasta que exista el archivo real); Cronograma por
+// Manifestación sigue llevando a su propia página.
 export const CRONOGRAMAS = [
   {
-    href: "/cronograma-general",
+    pdf: null,
     kicker: "Programación completa",
     title: "Cronograma General",
     desc: "Explora día por día todas las presentaciones, horarios y sedes del festival.",
@@ -131,5 +133,13 @@ export const CRONOGRAMAS = [
     desc: "Danza, música, teatro, artes visuales y más — encuentra tu manifestación artística.",
     accent: "var(--color-ficcua-blue)",
     tint: "linear-gradient(135deg, #2F57C6, #6E43C6)",
+  },
+  {
+    pdf: null,
+    kicker: "Charlas y conferencias",
+    title: "Componente Académico",
+    desc: "Más de 10 charlas a cargo de expositores que profundizan en un tema particular ligado a cada manifestación artística.",
+    accent: "var(--color-ficcua-gold)",
+    tint: "linear-gradient(135deg, #E8B33E, #4FA84E)",
   },
 ];
