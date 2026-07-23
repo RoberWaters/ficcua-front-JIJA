@@ -2,8 +2,9 @@ import { GarlandModule } from "./BannerGarland";
 
 const DEFAULT_COLORS = ["var(--color-ficcua-gold)", "var(--color-ficcua-green)", "var(--color-ficcua-blue)"];
 
-// Deterministic pseudo-random jitter (no Math.random) so server/client markup
-// always matches — a real random value here would cause a hydration mismatch.
+// Jitter pseudoaleatorio determinista, sin Math.random: un valor realmente
+// aleatorio acá daría markup distinto en servidor y cliente, y rompería la
+// hidratación.
 function jitter(seed, range = 3) {
   const x = Math.sin(seed * 999.7) * 10000;
   return (x - Math.floor(x)) * range * 2 - range;
@@ -12,9 +13,9 @@ function jitter(seed, range = 3) {
 const VB_W = 1000;
 const MODULE_ASPECT = 100 / 60;
 
-// Hangs the cenefa modules from a single sagging rope, papel-picado style —
-// everything is drawn in one viewBox so it's fully responsive (just an <svg
-// width="100%">), no JS measuring of the container needed.
+// Cuelga los módulos de la cenefa de una sola cuerda con caída, estilo papel
+// picado. Todo se dibuja en un mismo viewBox, así que es responsive con un
+// <svg width="100%"> y sin medir el contenedor desde JS.
 export function HangingGarland({
   width = "100%",
   count = 9,
@@ -28,7 +29,7 @@ export function HangingGarland({
   const moduleWidth = moduleSize * MODULE_ASPECT;
   const topY = 22;
   const dip = topY + sag;
-  const peakY = topY + sag / 2; // actual lowest point of the quadratic curve at t=0.5
+  const peakY = topY + sag / 2; // punto más bajo real de la curva cuadrática, en t=0.5
   const height = peakY + moduleSize + 16;
   const x0 = 28;
   const x1 = VB_W - 28;

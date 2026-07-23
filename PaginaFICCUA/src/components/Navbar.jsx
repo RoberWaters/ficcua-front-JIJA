@@ -23,7 +23,7 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Scroll-spy — mark the link whose section currently owns the viewport top.
+  // Scroll-spy — marca el enlace de la sección que domina el tope del viewport.
   useEffect(() => {
     const sections = LINKS.map((l) => document.querySelector(l.href)).filter(Boolean);
     if (!sections.length) return;
@@ -46,7 +46,7 @@ export function Navbar() {
     <div className="fixed inset-x-0 top-0 z-50">
       <CenefaBloques altura={32} />
 
-      {/* Glass panel — condenses and darkens on scroll instead of hiding outright. */}
+      {/* Panel glass — al hacer scroll se compacta y oscurece en vez de ocultarse. */}
       <nav
         className="transition-[background-color,backdrop-filter,padding,box-shadow] duration-300"
         style={{

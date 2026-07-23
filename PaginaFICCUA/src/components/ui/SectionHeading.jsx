@@ -1,8 +1,8 @@
 import { Kicker } from "./Kicker";
 import { Reveal } from "../Reveal";
 
-// kicker + title + optional subtitle — the pattern every section header on
-// the site repeats (Stats, Carousel, Countries, CronogramaLinks, PageHeader).
+// Kicker, título y subtítulo opcional — el patrón que repite todo encabezado de
+// sección del sitio: Stats, Carousel, Countries, CronogramaLinks y PageHeader.
 export function SectionHeading({
   kicker,
   kickerColor,

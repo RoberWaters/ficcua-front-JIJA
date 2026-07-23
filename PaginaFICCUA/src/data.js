@@ -5,7 +5,7 @@ import garifuna from "./assets/photos/garifuna.jpg";
 import pollera from "./assets/photos/pollera.jpg";
 import danzaAfricana from "./assets/photos/danza-africana.jpg";
 
-// Hero background
+// Fondo del hero
 export { grupoFolclorico as HERO_IMG };
 
 // Hero — galería de fondo (solo fotos horizontales)

@@ -1,15 +1,15 @@
-// Shared decorative pieces built from the FICCUA logo palette.
+// Piezas decorativas compartidas, armadas con la paleta del logo FICCUA.
 
 const PALETTE = ["#D13B5E", "#E8B33E", "#4FA84E", "#2F57C6", "#E8843E"];
 
-// Gentle confetti rain — deterministic so it doesn't reshuffle on re-render.
+// Lluvia suave de confeti — determinista para que no se reordene en cada render.
 export function Confetti({ count = 40, className = "" }) {
   const pieces = Array.from({ length: count }, (_, i) => ({
     color: PALETTE[i % PALETTE.length],
     size: 5 + (i % 6) * 1.4,
-    // Golden-angle step so pieces spread evenly across the full 0–100% width
-    // regardless of count. (i * 2.37 only reached ~50% at count 22, leaving the
-    // right half of the band empty.)
+    // Paso de ángulo áureo: reparte las piezas parejo en todo el ancho sin
+    // depender del count. Con i * 2.37 llegaba solo a la mitad con count 22 y
+    // dejaba vacía la mitad derecha de la banda.
     left: (i * 61.803) % 100,
     delay: (i * 0.19) % 6,
     duration: 5 + (i % 5) * 0.8,
@@ -38,7 +38,7 @@ export function Confetti({ count = 40, className = "" }) {
   );
 }
 
-// Papel picado — a strip of paper-cut banner triangles, a Latin-American staple.
+// Papel picado — tira de banderines triangulares.
 export function PapelPicado({ className = "", count = 34 }) {
   return (
     <div className={`flex w-full overflow-hidden ${className}`} aria-hidden="true">

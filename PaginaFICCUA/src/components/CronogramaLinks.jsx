@@ -4,7 +4,7 @@ import { SectionHeading } from "./ui/SectionHeading";
 import { SectionDivider } from "./ui/SectionDivider";
 import { Reveal } from "./Reveal";
 
-// Photo pulled per card so the tint isn't a flat rectangle of color.
+// Una foto por tarjeta para que el tinte no quede como un rectángulo plano.
 const CARD_PHOTOS = [HERO_GALLERY[0], HERO_GALLERY[2]];
 
 function Arrow() {
@@ -22,7 +22,7 @@ export function CronogramaLinks() {
         <SectionHeading kicker="Programación" kickerColor="var(--color-ficcua-red)" title="Consulta los cronogramas" className="mb-14" />
       </div>
 
-      {/* Full-bleed, edge to edge — the two cards read as one continuous band. */}
+      {/* A sangre, de borde a borde — las dos tarjetas leen como una sola banda. */}
       <div className="grid w-full sm:grid-cols-2">
         {CRONOGRAMAS.map((c, i) => (
           <Reveal key={c.href} variant="rise" delay={i * 90}>
@@ -39,7 +39,7 @@ export function CronogramaLinks() {
               <div className="absolute inset-0" style={{ background: c.tint, opacity: 0.88 }} />
               <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent" />
 
-              {/* decorative rings */}
+              {/* aros decorativos */}
               <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-white/10 transition-transform duration-500 group-hover:scale-125" />
               <div className="pointer-events-none absolute bottom-8 right-14 h-20 w-20 rotate-45 rounded-2xl bg-white/10" />
 

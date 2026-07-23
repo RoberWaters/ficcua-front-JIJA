@@ -12,13 +12,13 @@ function BackArrow() {
   );
 }
 
-// Shared header for standalone pages (anything besides Home) — same brand chrome
-// (logo, gold accent) as the landing Navbar, without its scroll-spy, which only
-// makes sense across the single-page sections of Home.
+// Header compartido de las páginas sueltas, o sea todo menos Home. Repite la
+// marca del Navbar del landing sin su scroll-spy, que solo tiene sentido entre
+// las secciones de una misma página.
 export function PageHeader({ kicker, title, description }) {
   return (
     <header className="relative overflow-hidden bg-surface-warm pb-20 pt-8">
-      {/* Floating cultural shapes, same motif as the landing Hero */}
+      {/* Formas culturales flotantes, mismo motivo que el Hero del landing */}
       <div className="pointer-events-none absolute inset-0" aria-hidden="true">
         <div className="animate-float-y absolute left-[6%] top-[18%] h-14 w-14 rounded-full border-2 border-ficcua-gold/40 bg-ficcua-gold/15" />
         <div className="animate-float-y-alt absolute right-[10%] top-[22%] h-10 w-10 rotate-45 border-2 border-ficcua-red/40 bg-ficcua-red/10" />

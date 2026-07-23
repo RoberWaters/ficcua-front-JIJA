@@ -1,8 +1,7 @@
 import { motion, useReducedMotion } from "framer-motion";
 
-// Entrance variants available via the `variant` prop — "fade" (default) is
-// the original opacity-only reveal; the rest add real motion for sections
-// that want more editorial punch.
+// Variantes de entrada, elegibles con la prop `variant`. "fade" es la original,
+// solo opacidad; el resto agregan movimiento real.
 const VARIANTS = {
   fade: { hidden: { opacity: 0 }, show: { opacity: 1 } },
   rise: { hidden: { opacity: 0, y: 28 }, show: { opacity: 1, y: 0 } },
@@ -10,10 +9,10 @@ const VARIANTS = {
   blur: { hidden: { opacity: 0, filter: "blur(10px)" }, show: { opacity: 1, filter: "blur(0px)" } },
 };
 
-// Wraps children and animates them in once on scroll. `delay` staggers
-// siblings. Built on Framer Motion's `whileInView`, which — unlike the CSS
-// `animation` shorthand — doesn't honor prefers-reduced-motion on its own,
-// so it's checked explicitly here, same as the rest of the codebase does.
+// Envuelve a sus children y los anima una sola vez al entrar en viewport;
+// `delay` escalona hermanos. Usa `whileInView` de Framer Motion, que a
+// diferencia del shorthand `animation` de CSS no respeta prefers-reduced-motion
+// por su cuenta, así que se verifica acá a mano.
 export function Reveal({ children, delay = 0, duration = 0.6, variant = "fade", className = "", style, as = "div" }) {
   const reduceMotion = useReducedMotion();
   const MotionTag = motion[as] ?? motion.div;

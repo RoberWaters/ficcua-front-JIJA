@@ -1,8 +1,8 @@
 const DEFAULT_COLORS = ["var(--color-ficcua-gold)", "var(--color-ficcua-green)", "var(--color-ficcua-blue)"];
 
-// One module = ascending stair-step glyph + white square-spiral (greco), the
-// two motifs that repeat across the reference cenefa. Pure vector so it can
-// be recolored and resized without ever showing a raster seam.
+// Un módulo = escalera ascendente + espiral griega blanca, los dos motivos que
+// se repiten en la cenefa de referencia. Vector puro, así que se recolorea y
+// escala sin mostrar costuras.
 const MODULE_VB_W = 100;
 const MODULE_VB_H = 60;
 
@@ -30,10 +30,9 @@ export function GarlandModule({ color, height, spiralColor = "#FFF7EC" }) {
   );
 }
 
-// Recreation of the fucsia cenefa (staircases + greco spirals) as scalable
-// vector modules instead of a raster image, so it repeats losslessly at any
-// width. `repeat` tiles the pattern edge to edge; set it to false for a
-// single pass through `colors` instead of a full-bleed band.
+// La cenefa fucsia (escaleras y espirales griegas) rehecha como módulos
+// vectoriales en vez de imagen, para que repita sin pérdida a cualquier ancho.
+// `repeat` cubre todo el ancho; en false hace una sola pasada por `colors`.
 export function BannerGarland({
   width = "100%",
   height = 56,

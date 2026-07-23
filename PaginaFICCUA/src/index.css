@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Hanken+Grotesk:wght@400;500;600;700;800;900&display=swap');
 @import "tailwindcss";
 
-/* ─── Design tokens ──────────────────────────────────────────────────────── */
+/* ─── Tokens de diseño ───────────────────────────────────────────────────── */
 @theme {
   --color-ficcua-red: #D13B5E;
   --color-ficcua-gold: #E8B33E;
@@ -19,14 +19,14 @@
   --font-sans: 'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif;
 }
 
-/* Custom easing curves — the built-in ones are too weak (Emil K.) */
+/* Curvas de easing propias — las de fábrica quedan muy flojas (Emil K.) */
 :root {
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
   --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
 
-  /* Shared surfaces — named so recurring backgrounds (radial cream wash,
-     raised dark panel) aren't hand-duplicated per component. */
+  /* Superficies compartidas — con nombre propio para no duplicar a mano en cada
+     componente los fondos que se repiten. */
   --surface-warm: radial-gradient(60% 55% at 50% 0%, #FFFDF7 0%, #FFF7EC 70%);
   --surface-ink-raised: linear-gradient(180deg, #241238 0%, #1B0E30 100%);
   --surface-sunset: linear-gradient(135deg, #E8B33E 0%, #4FA84E 100%);
@@ -51,15 +51,15 @@ body {
   color: var(--color-ink);
 }
 
-/* Keyboard focus only — visible ring for tab navigation, nothing on mouse click.
-   Uses the brand gold so it reads as intentional, not a browser default. */
+/* Solo foco de teclado — anillo visible al navegar con tab, nada al hacer clic.
+   Va en el dorado de marca para que lea como decisión y no como default. */
 :focus-visible {
   outline: 2px solid var(--color-ficcua-gold);
   outline-offset: 3px;
   border-radius: 4px;
 }
 
-/* Warm film grain overlay for texture, sits above everything, non-interactive */
+/* Grano de película para dar textura; va encima de todo y no intercepta clics */
 .grain::after {
   content: "";
   position: fixed;
@@ -71,7 +71,7 @@ body {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* ─── Utility helpers ────────────────────────────────────────────────────── */
+/* ─── Utilidades ─────────────────────────────────────────────────────────── */
 .font-display { font-family: var(--font-display); }
 
 .bg-surface-warm       { background: var(--surface-warm); }
@@ -79,8 +79,8 @@ body {
 .bg-surface-sunset     { background: var(--surface-sunset); }
 .bg-surface-dusk       { background: var(--surface-dusk); }
 
-/* Editorial type scale — used for section/hero titles instead of one-off
-   text-4xl/text-5xl clamp combos per component. */
+/* Escala tipográfica editorial — para los títulos de hero y de sección, en vez
+   de armar un clamp con text-4xl o text-5xl suelto en cada componente. */
 .text-display-1 {
   font-family: var(--font-display);
   font-weight: 900;
@@ -96,9 +96,9 @@ body {
   font-size: clamp(2.1rem, 4.4vw, 3.5rem);
 }
 
-/* The eyebrow label repeated ad hoc across every section (Hero, Stats,
-   Carousel, Countries, PageHeader) — kept as a global utility since it's
-   pure typography, no layout, same as .font-display above. */
+/* La etiqueta que se repetía suelta en cada sección: Hero, Stats, Carousel,
+   Countries y PageHeader. Queda como utilidad global porque es tipografía pura,
+   sin layout, igual que .font-display de arriba. */
 .kicker {
   font-weight: 900;
   text-transform: uppercase;
@@ -164,7 +164,7 @@ body {
 .animate-float-y      { animation: float-y 6s ease-in-out infinite; }
 .animate-float-y-alt  { animation: float-y-alt 7s ease-in-out infinite; }
 
-/* ─── Reduced motion ─────────────────────────────────────────────────────── */
+/* ─── Movimiento reducido ────────────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *,

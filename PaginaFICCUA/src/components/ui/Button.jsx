@@ -14,8 +14,8 @@ const SIZES = {
   sm: "px-5 py-2.5 text-sm",
 };
 
-// Shared CTA — replaces the hand-rolled `<a className="rounded-full px-8 py-4...">`
-// that used to be copy-pasted across Hero, Navbar and NotFound.
+// CTA compartido — reemplaza al `<a className="rounded-full px-8 py-4...">` que
+// estaba copiado a mano en Hero, Navbar y NotFound.
 export function Button({ variant = "primary", size = "lg", to, href, className = "", style, children, ...props }) {
   const cls = `${BASE} ${SIZES[size] ?? SIZES.lg} ${VARIANTS[variant] ?? VARIANTS.primary} ${className}`;
   const finalStyle = variant === "primary" ? { background: "var(--surface-sunset)", ...style } : style;

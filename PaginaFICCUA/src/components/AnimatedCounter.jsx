@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
 import { useInView } from "../hooks/useInView";
 
-// Counts up from 0 to `value` once the element enters the viewport.
-// Uses requestAnimationFrame with an ease-out curve so the number decelerates
-// as it approaches the target — feels intentional, not linear.
+// Cuenta de 0 a `value` cuando el elemento entra en viewport. Va por rAF con
+// ease-out para que el número desacelere al acercarse al objetivo.
 export function AnimatedCounter({ value, suffix = "", duration = 1800 }) {
   const [ref, inView] = useInView({ threshold: 0.4 });
   const [display, setDisplay] = useState(0);

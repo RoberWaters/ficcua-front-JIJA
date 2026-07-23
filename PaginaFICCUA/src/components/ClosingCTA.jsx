@@ -3,9 +3,9 @@ import { Button } from "./ui/Button";
 import { Reveal } from "./Reveal";
 import { SectionDivider } from "./ui/SectionDivider";
 
-// Closing statement band that bridges Home into the Footer instead of the
-// page ending abruptly right after Countries. Wavy on both edges — like a
-// ribbon banner — so it reads as a deliberate band, not a rectangular block.
+// Banda de cierre que enlaza Home con el footer, en vez de que la página corte
+// en seco después de Countries. Ondas en los dos bordes, como una cinta, para
+// que lea como banda intencional y no como bloque rectangular.
 export function ClosingCTA() {
   return (
     <section className="relative overflow-hidden bg-ink py-24 text-cream">
@@ -30,7 +30,7 @@ export function ClosingCTA() {
         </Reveal>
       </div>
 
-      {/* Wave dividers painted last so the dusk tint above never mutes their cream fill. */}
+      {/* Las ondas se pintan al final para que el tinte dusk de arriba no apague su relleno crema. */}
       <div className="absolute inset-x-0 top-0 z-10 -translate-y-px">
         <SectionDivider fill="var(--color-cream)" flip />
       </div>

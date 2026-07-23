@@ -20,7 +20,7 @@ export function Hero() {
 
   return (
     <header id="top" className="relative flex min-h-screen flex-col overflow-hidden pt-24 sm:pt-28">
-      {/* Atmospheric background gallery — crossfade + slow ken-burns drift */}
+      {/* Galería de fondo — crossfade y deriva ken burns lenta */}
       <div className="absolute inset-0">
         {HERO_GALLERY.map((src, i) => (
           <img
@@ -37,13 +37,13 @@ export function Hero() {
         ))}
         <div className="absolute inset-0 bg-gradient-to-b from-ink/70 via-ink/55 to-ink" />
         <div className="absolute inset-0 bg-gradient-to-r from-ink/60 via-ink/10 to-ink/40" />
-        {/* Clean dissolve of the photo into solid black at the bottom edge */}
+        {/* Disuelve la foto en negro sólido contra el borde inferior */}
         <div className="absolute inset-x-0 bottom-0 h-72 bg-gradient-to-b from-transparent to-ink" />
       </div>
 
       <Confetti count={40} className="z-10" />
 
-      {/* Floating cultural shapes */}
+      {/* Formas culturales flotantes */}
       <div className="pointer-events-none absolute inset-0 z-10" aria-hidden="true">
         <div className="animate-float-y absolute left-[6%] top-[20%] h-16 w-16 rounded-full border-2 border-ficcua-gold/40 bg-ficcua-gold/10" />
         <div className="animate-float-y-alt absolute right-[8%] top-[16%] h-12 w-12 rotate-45 border-2 border-ficcua-red/50 bg-ficcua-red/15" />
@@ -54,7 +54,7 @@ export function Hero() {
           inferior tiene que cubrir su altura (56px / 80px) o en pantallas bajas
           la curva termina mordiendo los botones. */}
       <div className="relative z-30 mx-auto flex w-full max-w-4xl flex-1 flex-col items-center justify-center gap-14 px-6 pb-24 pt-10 text-center sm:pb-32">
-        {/* Editorial text column */}
+        {/* Columna de texto editorial */}
         <div>
           <div style={{ animation: "fade-in-up 0.7s var(--ease-out) both" }}>
             <Kicker color="var(--color-ficcua-gold)">Edición 2026 · Honduras</Kicker>

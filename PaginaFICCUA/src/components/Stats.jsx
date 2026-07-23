@@ -4,7 +4,7 @@ import { Reveal } from "./Reveal";
 import { SectionHeading } from "./ui/SectionHeading";
 import { SectionDivider } from "./ui/SectionDivider";
 
-// Thin line-art icons (one per stat), in the flat style of the reference band.
+// Iconos de línea fina, uno por contador, en el estilo plano de la banda de referencia.
 const ICONS = [
   // Universidades — birrete
   () => (
@@ -47,8 +47,8 @@ export function Stats() {
         />
       </div>
 
-      {/* Solid-color counter tiles — full-bleed, joined edge to edge, square
-          corners. Same "big rectangular button" language as the Cronograma cards. */}
+      {/* Tiles de color sólido, a sangre, unidos borde a borde y sin esquinas
+          redondeadas. Mismo lenguaje que las tarjetas de Cronograma. */}
       <div className="grid w-full grid-cols-2 lg:grid-cols-4">
         {STATS.map((s, i) => (
           <Reveal key={s.label} delay={i * 80}>

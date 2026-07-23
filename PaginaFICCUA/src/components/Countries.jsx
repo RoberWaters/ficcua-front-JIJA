@@ -2,7 +2,7 @@ import { COUNTRIES } from "../data";
 import { Reveal } from "./Reveal";
 import { SectionHeading } from "./ui/SectionHeading";
 
-// Duplicated once so the marquee track can loop seamlessly (translateX -50%).
+// Duplicado una vez para que el marquee cierre el loop sin salto (translateX -50%).
 const STRIP = [...COUNTRIES, ...COUNTRIES];
 
 export function Countries() {
@@ -22,7 +22,7 @@ export function Countries() {
           className="mb-14 px-6"
         />
 
-        {/* Cintillo — the flags drift steadily past. Pauses on hover. */}
+        {/* Cintillo — las banderas desfilan de corrido. Se pausa en hover. */}
         <Reveal
           className="group relative w-full overflow-hidden py-4"
           style={{

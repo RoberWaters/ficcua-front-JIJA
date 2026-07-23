@@ -4,10 +4,9 @@ import { Home } from "./pages/Home";
 import { CronogramaManifestacion } from "./pages/CronogramaManifestacion";
 import { NotFound } from "./pages/NotFound";
 
-// Client-side navigation keeps scroll position by default — reset it on every
-// route change so a new page always opens at the top. When the destination
-// carries a hash (footer links back into a Home section, e.g. "/#galeria"),
-// scroll to that section instead of overriding it back to the top.
+// La navegación client-side conserva el scroll, así que lo reiniciamos en cada
+// cambio de ruta. Si el destino trae hash, como "/#galeria" en los enlaces del
+// footer de vuelta a Home, vamos a esa sección en vez de al tope.
 function ScrollToTop() {
   const { pathname, hash } = useLocation();
   useEffect(() => {

@@ -1,6 +1,6 @@
-// Organic wave edge dropped between sections so backgrounds blend instead of
-// cutting hard at a flat rectangle. `fill` should match the section that
-// follows (or precedes, when `flip` is set) so the curve reads as one piece.
+// Borde ondulado entre secciones para que los fondos se fundan en vez de cortar
+// en recto. `fill` tiene que ser el color de la sección que sigue, o la anterior
+// cuando se pasa `flip`, para que la curva lea como una sola pieza.
 export function SectionDivider({ fill = "var(--color-cream)", flip = false, className = "" }) {
   return (
     <div

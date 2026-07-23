@@ -4,8 +4,8 @@ import { Reveal } from "../components/Reveal";
 import { Footer } from "../components/Footer";
 import { CenefaBloques } from "../components/CenefaBloques";
 
-// Each card opens that discipline's programación PDF in a new tab once it
-// exists — `m.pdf` is a placeholder (null) until the real files are ready.
+// Cada tarjeta abre el PDF de programación de su disciplina en pestaña nueva.
+// `m.pdf` queda en null hasta que existan los archivos reales.
 function ManifestacionCard({ m }) {
   const hasPdf = Boolean(m.pdf);
   return (

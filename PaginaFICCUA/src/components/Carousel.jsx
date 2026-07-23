@@ -20,7 +20,7 @@ export function Carousel() {
 
   const go = useCallback((next) => setIndex(((next % count) + count) % count), [count]);
 
-  // Autoplay — pauses on hover and when the tab is hidden (invisible correctness).
+  // Autoplay — se pausa en hover y con la pestaña oculta.
   useEffect(() => {
     if (paused) return;
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -34,9 +34,9 @@ export function Carousel() {
 
   const thumbsRef = useRef(null);
   useEffect(() => {
-    // Center the active thumbnail within its own horizontal track only.
-    // scrollIntoView would also scroll the whole page vertically, yanking the
-    // viewport to the gallery while autoplay advances in the background.
+    // Centra la miniatura activa dentro de su propio track horizontal.
+    // scrollIntoView movería también el scroll vertical de la página, tirando
+    // el viewport hacia la galería cada vez que el autoplay avanza de fondo.
     const track = thumbsRef.current;
     const el = track?.children[index];
     if (!track || !el) return;
@@ -55,7 +55,7 @@ export function Carousel() {
         />
       </div>
 
-      {/* Full-bleed photo stage — edge to edge, tall, images fitted to the frame. */}
+      {/* Escenario de la foto a sangre — de borde a borde y alto. */}
       <Reveal delay={100}>
         <div
           className="relative w-full overflow-hidden bg-ink"
@@ -74,8 +74,8 @@ export function Carousel() {
                 }}
                 aria-hidden={i !== index}
               >
-                {/* Full-bleed photo — object-cover so it fills edge to edge.
-                    object-position per-image (default center) keeps faces in frame. */}
+                {/* object-cover para llenar el marco; el object-position por
+                    imagen (centro por defecto) mantiene las caras encuadradas. */}
                 <img
                   src={item.src}
                   alt={item.title}
@@ -86,13 +86,13 @@ export function Carousel() {
               </figure>
             ))}
 
-            {/* counter */}
+            {/* contador */}
             <div className="absolute right-5 top-5 rounded-full bg-ink/50 px-4 py-1.5 text-sm font-semibold text-cream backdrop-blur-sm">
               {index + 1} / {count}
             </div>
           </div>
 
-          {/* arrows */}
+          {/* flechas */}
           <button
             onClick={() => go(index - 1)}
             aria-label="Anterior"
@@ -111,7 +111,7 @@ export function Carousel() {
       </Reveal>
 
       <div className="mx-auto max-w-4xl px-6">
-        {/* progress dots */}
+        {/* puntos de progreso */}
         <div className="mt-7 flex items-center justify-center gap-2.5">
           {CAROUSEL.map((item, i) => (
             <button
@@ -127,7 +127,7 @@ export function Carousel() {
           ))}
         </div>
 
-        {/* thumbnails */}
+        {/* miniaturas */}
         <div
           ref={thumbsRef}
           className="mt-6 flex justify-start gap-3 overflow-x-auto pb-2 sm:justify-center"

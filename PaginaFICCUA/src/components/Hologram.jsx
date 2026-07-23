@@ -2,13 +2,12 @@ import { useEffect, useRef } from "react";
 import logo from "../assets/logo-ficcua.png";
 import { Reveal } from "./Reveal";
 
-// 3D logo viewer. The logo tilts and drifts on its own en todos los dispositivos
-// — antes en desktop seguía al puntero, pero eso dejaba la animación muerta
-// hasta que alguien pasaba el mouse por encima. Ahora el movimiento autónomo
-// (el que ya se usaba en móvil) es el único, así que se ve igual en todas las
-// pantallas. Flota sobre una sombra suave, con partículas subiendo de fondo.
-// El movimiento va por un lerp en rAF — cada frame se acerca al objetivo — para
-// que quede fluido sin depender de una librería de animación.
+// Visor 3D del logo. Se inclina y deriva solo en todos los dispositivos: antes
+// en desktop seguía al puntero, pero eso dejaba la animación muerta hasta que
+// alguien pasaba el mouse encima, así que el movimiento autónomo que ya corría
+// en móvil quedó como único modo. Flota sobre una sombra suave, con partículas
+// subiendo de fondo. El movimiento va por lerp en rAF, sin librería de por
+// medio: cada frame acerca el valor actual al objetivo.
 export function Hologram() {
   const particles = Array.from({ length: 18 }, (_, i) => ({
     left: (i * 5.5 + 6) % 100,
@@ -67,7 +66,7 @@ export function Hologram() {
             className="relative mx-auto flex h-160 w-full items-center justify-center"
             style={{ perspective: "1600px" }}
           >
-            {/* rising particles */}
+            {/* partículas ascendentes */}
             <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
               {particles.map((p, i) => (
                 <span
@@ -100,7 +99,7 @@ export function Hologram() {
               />
             </div>
 
-            {/* ground shadow — same width as the logo above it */}
+            {/* sombra en el piso — mismo ancho que el logo de arriba */}
             <div
               className="pointer-events-none absolute bottom-8 h-8 w-[80%] max-w-4xl rounded-[100%] sm:w-[70%] lg:w-[62%]"
               style={{
