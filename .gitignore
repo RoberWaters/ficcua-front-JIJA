@@ -6,3 +6,7 @@ CLAUDE.md
 # macOS metadata cruft
 .DS_Store
 ._*
+
+# npm instalado por error en la raíz del repo (el proyecto real vive en PaginaFICCUA/)
+/node_modules
+/package-lock.json
