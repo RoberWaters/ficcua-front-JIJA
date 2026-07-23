@@ -62,8 +62,8 @@ export const COUNTRIES = [
 
 // Página — Cronograma por manifestación: las 6 disciplinas del festival.
 // `pdf` apunta a un archivo de `public/cronogramas/`, que se sirve tal cual y
-// la tarjeta abre en una pestaña nueva. Música y Literatura siguen en null a
-// propósito: aún no existe su programación y la tarjeta queda deshabilitada.
+// la tarjeta abre en una pestaña nueva. Música sigue en null a propósito: aún
+// no existe su programación y su tarjeta queda deshabilitada.
 export const MANIFESTACIONES = [
   {
     key: "danza",
@@ -111,7 +111,7 @@ export const MANIFESTACIONES = [
     accent: "#6E43C6",
     desc: "Lecturas, recitales de poesía y presentaciones de obras literarias.",
     foto: garifuna,
-    pdf: null,
+    pdf: "/cronogramas/literatura.pdf",
   },
 ];
 
