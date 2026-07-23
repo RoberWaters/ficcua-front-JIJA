@@ -11,7 +11,9 @@ export function Footer() {
         <div className="flex items-center gap-4">
           <img src={logo} alt="FICCUA" className="h-10 w-auto" />
           <img src={logoVoae} alt="VOAE" className="h-10 w-auto" />
-          <img src={logoUnah} alt="UNAH" className="h-10 w-auto" />
+          {/* Escudo UNAH — proporción casi cuadrada (1.53:1) frente a los otros dos
+              logos apaisados, así que necesita más altura para pesar igual en la fila. */}
+          <img src={logoUnah} alt="UNAH" className="h-20 w-auto" />
         </div>
       </div>
     </footer>

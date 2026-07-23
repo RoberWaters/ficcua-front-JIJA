@@ -28,9 +28,6 @@ export function PageHeader({ kicker, title, description }) {
       <nav className="relative mx-auto flex max-w-7xl items-center justify-between px-6">
         <Link to="/" className="flex items-center gap-3">
           <img src={logo} alt="FICCUA" className="h-11 w-auto drop-shadow" />
-          <span className="hidden font-display text-lg font-semibold tracking-tight text-ink sm:block">
-            <span className="text-ficcua-gold">2026</span>
-          </span>
         </Link>
         <Button to="/" variant="ghost" size="sm" className="group">
           <BackArrow />

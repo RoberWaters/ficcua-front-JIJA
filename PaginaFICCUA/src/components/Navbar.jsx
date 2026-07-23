@@ -63,9 +63,6 @@ export function Navbar() {
         >
           <a href="#top" className="flex items-center gap-3">
             <img src={logo} alt="FICCUA" className="h-10 w-auto drop-shadow" />
-            <span className="hidden font-display text-lg font-semibold tracking-tight text-cream sm:block">
-              <span className="text-ficcua-gold">2026</span>
-            </span>
           </a>
 
           <div className="hidden items-center gap-1 md:flex">

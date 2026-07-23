@@ -2,12 +2,13 @@ import { useEffect, useRef } from "react";
 import logo from "../assets/logo-ficcua.png";
 import { Reveal } from "./Reveal";
 
-// Interactive 3D logo viewer. On desktop the logo tilts in real 3D following
-// the pointer (with a parallax offset for depth); on touch devices it drifts
-// on its own so the effect is always alive without asking for any sensor
-// permission. It floats above a soft black ground shadow, with rising
-// particles for atmosphere. The motion is driven by a rAF lerp — a target is
-// eased toward each frame — so it stays smooth without a heavy dependency.
+// 3D logo viewer. The logo tilts and drifts on its own en todos los dispositivos
+// — antes en desktop seguía al puntero, pero eso dejaba la animación muerta
+// hasta que alguien pasaba el mouse por encima. Ahora el movimiento autónomo
+// (el que ya se usaba en móvil) es el único, así que se ve igual en todas las
+// pantallas. Flota sobre una sombra suave, con partículas subiendo de fondo.
+// El movimiento va por un lerp en rAF — cada frame se acerca al objetivo — para
+// que quede fluido sin depender de una librería de animación.
 export function Hologram() {
   const particles = Array.from({ length: 18 }, (_, i) => ({
     left: (i * 5.5 + 6) % 100,
@@ -16,37 +17,32 @@ export function Hologram() {
     size: 3 + (i % 3),
   }));
 
-  const stageRef = useRef(null);
   const panelRef = useRef(null);
   const logoRef = useRef(null);
 
   useEffect(() => {
-    const stage = stageRef.current;
     const panel = panelRef.current;
     const logoEl = logoRef.current;
-    if (!stage || !panel || !logoEl) return;
+    if (!panel || !logoEl) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-    // target = where the pointer/drift wants it, cur = eased current value
+    // target = a dónde quiere ir el drift, cur = el valor ya suavizado
     const target = { rx: 0, ry: 0, tx: 0, ty: 0 };
     const cur = { rx: 0, ry: 0, tx: 0, ty: 0 };
     const lerp = (a, b, t) => a + (b - a) * t;
-    const isTouch = window.matchMedia("(pointer: coarse)").matches;
     const start = performance.now();
     let raf = 0;
 
     const tick = (now) => {
-      // Phones can't hover a pointer, so instead of asking for any sensor
-      // permission we let the logo drift on its own: two slow sine waves at
-      // different rates trace a gentle floating path. Always visible, never
-      // prompts the user. Desktop skips this and follows the pointer below.
-      if (isTouch) {
-        const t = (now - start) / 1000;
-        target.ry = Math.sin(t * 0.8) * 12;
-        target.rx = Math.sin(t * 0.6 + 1) * 8;
-        target.tx = Math.sin(t * 0.8) * 22;
-        target.ty = Math.sin(t * 0.6 + 1) * 14;
-      }
+      // Dos senoidales lentas a distinta frecuencia trazan un flotado suave que
+      // nunca se repite igual. El logo rota y se desplaza a la vez, así que el
+      // conjunto lee como parallax sin necesitar puntero ni sensores.
+      const t = (now - start) / 1000;
+      target.ry = Math.sin(t * 0.8) * 12;
+      target.rx = Math.sin(t * 0.6 + 1) * 8;
+      target.tx = Math.sin(t * 0.8) * 22;
+      target.ty = Math.sin(t * 0.6 + 1) * 14;
+
       cur.rx = lerp(cur.rx, target.rx, 0.12);
       cur.ry = lerp(cur.ry, target.ry, 0.12);
       cur.tx = lerp(cur.tx, target.tx, 0.12);
@@ -56,40 +52,9 @@ export function Hologram() {
       raf = requestAnimationFrame(tick);
     };
 
-    // ---- Desktop / mouse: follow the pointer ----
-    const onMove = (e) => {
-      const r = stage.getBoundingClientRect();
-      const px = (e.clientX - r.left) / r.width; // 0..1
-      const py = (e.clientY - r.top) / r.height; // 0..1
-      // Panel tilts (X-axis from vertical pointer, Y-axis from horizontal)
-      target.rx = 15 - 30 * py;
-      target.ry = -15 + 30 * px;
-      // Logo drifts the opposite way for a parallax sense of depth
-      target.tx = -30 + 60 * px;
-      target.ty = -30 + 60 * py;
-    };
-
-    const onLeave = () => {
-      target.rx = 0;
-      target.ry = 0;
-      target.tx = 0;
-      target.ty = 0;
-    };
-
-    // Only the mouse follows the pointer; on touch the drift above owns the
-    // motion, so we don't attach these (a touch-drag would otherwise fight it).
-    if (!isTouch) {
-      stage.addEventListener("pointermove", onMove);
-      stage.addEventListener("pointerleave", onLeave);
-    }
-
     raf = requestAnimationFrame(tick);
 
-    return () => {
-      cancelAnimationFrame(raf);
-      stage.removeEventListener("pointermove", onMove);
-      stage.removeEventListener("pointerleave", onLeave);
-    };
+    return () => cancelAnimationFrame(raf);
   }, []);
 
   return (
@@ -99,7 +64,6 @@ export function Hologram() {
       <div className="relative w-full text-center">
         <Reveal delay={120}>
           <div
-            ref={stageRef}
             className="relative mx-auto flex h-160 w-full items-center justify-center"
             style={{ perspective: "1600px" }}
           >
@@ -121,7 +85,7 @@ export function Hologram() {
               ))}
             </div>
 
-            {/* pointer-tilted floating logo (no panel) */}
+            {/* logo flotante con inclinación autónoma */}
             <div
               ref={panelRef}
               className="relative mx-auto w-[80%] max-w-4xl sm:w-[70%] lg:w-[62%]"

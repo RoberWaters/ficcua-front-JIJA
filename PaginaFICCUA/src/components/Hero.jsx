@@ -50,7 +50,10 @@ export function Hero() {
         <div className="animate-float-y absolute bottom-[30%] left-[3%] h-14 w-14 rounded-full border-2 border-ficcua-blue/40 bg-ficcua-blue/10" style={{ animationDelay: "0.8s" }} />
       </div>
 
-      <div className="relative z-30 mx-auto flex w-full max-w-4xl flex-1 flex-col items-center justify-center gap-14 px-6 py-10 text-center">
+      {/* El divisor de onda va en `absolute`, así que no reserva alto: el padding
+          inferior tiene que cubrir su altura (56px / 80px) o en pantallas bajas
+          la curva termina mordiendo los botones. */}
+      <div className="relative z-30 mx-auto flex w-full max-w-4xl flex-1 flex-col items-center justify-center gap-14 px-6 pb-24 pt-10 text-center sm:pb-32">
         {/* Editorial text column */}
         <div>
           <div style={{ animation: "fade-in-up 0.7s var(--ease-out) both" }}>
