@@ -112,18 +112,25 @@ export function Carousel() {
 
       <div className="mx-auto max-w-4xl px-6">
         {/* puntos de progreso */}
-        <div className="mt-7 flex items-center justify-center gap-2.5">
+        {/* El punto mide 10px, pero el botón que lo envuelve llega a 44px de
+            alto: en móvil el blanco táctil es ese, no el punto que se ve. */}
+        <div className="mt-4 flex items-center justify-center gap-1">
           {CAROUSEL.map((item, i) => (
             <button
               key={item.src}
               onClick={() => setIndex(i)}
               aria-label={`Ir a la foto ${i + 1}`}
-              className="h-2.5 rounded-full transition-all duration-300"
-              style={{
-                width: i === index ? 30 : 10,
-                background: i === index ? "var(--color-ficcua-red)" : "rgba(21,10,36,0.18)",
-              }}
-            />
+              aria-current={i === index ? "true" : undefined}
+              className="flex h-11 items-center justify-center px-1.5"
+            >
+              <span
+                className="block h-2.5 rounded-full transition-all duration-300"
+                style={{
+                  width: i === index ? 30 : 10,
+                  background: i === index ? "var(--color-ficcua-red)" : "rgba(21,10,36,0.18)",
+                }}
+              />
+            </button>
           ))}
         </div>
 

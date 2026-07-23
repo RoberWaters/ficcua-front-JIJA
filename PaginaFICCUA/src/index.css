@@ -72,7 +72,14 @@ body {
 }
 
 /* ─── Utilidades ─────────────────────────────────────────────────────────── */
-.font-display { font-family: var(--font-display); }
+/* Las palabras largas del español ("Interuniversitario", "manifestación") no se
+   pueden partir y a tamaño de titular desbordan un teléfono. Va en la utilidad
+   compartida para que valga en todo titular, no solo en la escala display. */
+.font-display {
+  font-family: var(--font-display);
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
 
 .bg-surface-warm       { background: var(--surface-warm); }
 .bg-surface-ink-raised { background: var(--surface-ink-raised); }

@@ -40,7 +40,9 @@ export function PageHeader({ kicker, title, description }) {
 
       <Reveal className="relative mx-auto mt-10 max-w-4xl px-6 text-center sm:mt-16" variant="rise">
         <Kicker>{kicker}</Kicker>
-        <h1 className="mt-3 font-display text-[clamp(2.5rem,6vw,4.5rem)] font-black leading-[0.95] text-ink">
+        {/* El mínimo del clamp tiene que caber en un teléfono: "manifestación"
+            no se puede partir y a 2.5rem se salía del ancho en pantallas de 320px. */}
+        <h1 className="mt-3 font-display text-[clamp(1.9rem,6vw,4.5rem)] font-black leading-[0.95] text-ink">
           {title}
         </h1>
         <p className="mt-5 text-lg text-ink/70 md:text-xl">{description}</p>

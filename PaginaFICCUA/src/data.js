@@ -61,8 +61,9 @@ export const COUNTRIES = [
 ];
 
 // Página — Cronograma por manifestación: las 6 disciplinas del festival.
-// `pdf` queda en null a propósito — todavía no existe el PDF de programación
-// por disciplina; cuando exista, cada tarjeta abre el suyo en pestaña nueva.
+// `pdf` apunta a un archivo de `public/cronogramas/`, que se sirve tal cual y
+// la tarjeta abre en una pestaña nueva. Música y Literatura siguen en null a
+// propósito: aún no existe su programación y la tarjeta queda deshabilitada.
 export const MANIFESTACIONES = [
   {
     key: "danza",
@@ -70,7 +71,7 @@ export const MANIFESTACIONES = [
     accent: "var(--color-ficcua-red)",
     desc: "Trajes típicos, coreografías folclóricas y ritmos que narran la historia de cada pueblo.",
     foto: grupoFolclorico,
-    pdf: null,
+    pdf: "/cronogramas/danza.pdf",
   },
   {
     key: "teatro",
@@ -78,7 +79,7 @@ export const MANIFESTACIONES = [
     accent: "var(--color-ficcua-gold)",
     desc: "Puestas en escena universitarias que exploran identidad, comedia y drama.",
     foto: danzaNoche,
-    pdf: null,
+    pdf: "/cronogramas/teatro.pdf",
   },
   {
     key: "musica",
@@ -94,7 +95,7 @@ export const MANIFESTACIONES = [
     accent: "var(--color-ficcua-blue)",
     desc: "Pintura, escultura y fotografía expuestas por artistas de toda la región.",
     foto: pollera,
-    pdf: null,
+    pdf: "/cronogramas/artes-visuales.pdf",
   },
   {
     key: "cinematografia",
@@ -102,7 +103,7 @@ export const MANIFESTACIONES = [
     accent: "#E8843E",
     desc: "Cortometrajes y muestras audiovisuales de estudiantes centroamericanos.",
     foto: danzaAfricana,
-    pdf: null,
+    pdf: "/cronogramas/cinematografia.pdf",
   },
   {
     key: "literatura",

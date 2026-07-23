@@ -56,8 +56,10 @@ export function CronogramaLinks() {
         <SectionHeading kicker="Programación" kickerColor="var(--color-ficcua-red)" title="Consulta los cronogramas" className="mb-14" />
       </div>
 
-      {/* A sangre, de borde a borde — las tarjetas leen como una sola banda. */}
-      <div className="grid w-full grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+      {/* A sangre, de borde a borde — las tarjetas leen como una sola banda.
+          Son 3, así que salta de 1 a 3 columnas: con un paso intermedio de 2
+          quedaba una tarjeta suelta en la fila de abajo en tablets. */}
+      <div className="grid w-full grid-cols-1 md:grid-cols-3">
         {CRONOGRAMAS.map((c, i) => {
           const photo = CARD_PHOTOS[i % CARD_PHOTOS.length];
           const cardClass =

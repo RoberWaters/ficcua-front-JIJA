@@ -4,17 +4,23 @@ import { Reveal } from "../components/Reveal";
 import { Footer } from "../components/Footer";
 import { CenefaBloques } from "../components/CenefaBloques";
 
-// Cada tarjeta abre el PDF de programación de su disciplina en pestaña nueva.
-// `m.pdf` queda en null hasta que existan los archivos reales.
-function ManifestacionCard({ m }) {
-  const hasPdf = Boolean(m.pdf);
+const CARD_CLASS =
+  "group relative flex min-h-[300px] flex-col justify-between overflow-hidden p-6 text-left text-cream shadow-xl transition-[filter] duration-300 hover:brightness-105 disabled:cursor-not-allowed sm:min-h-[360px] sm:p-9";
+
+function IconoNuevaPestana() {
   return (
-    <button
-      type="button"
-      disabled={!hasPdf}
-      onClick={() => hasPdf && window.open(m.pdf, "_blank", "noopener,noreferrer")}
-      className="group relative flex min-h-[300px] flex-col justify-between overflow-hidden p-6 text-left text-cream shadow-xl transition-[filter] duration-300 hover:brightness-105 disabled:cursor-not-allowed sm:min-h-[360px] sm:p-9"
-    >
+    <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4 shrink-0" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M14 4h6v6M20 4l-9 9" />
+      <path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5" />
+    </svg>
+  );
+}
+
+// Contenido interno, compartido entre la tarjeta que abre el PDF y la que
+// sigue deshabilitada porque su disciplina aún no tiene programación.
+function CardContent({ m, hasPdf }) {
+  return (
+    <>
       <img
         src={m.foto}
         alt=""
@@ -29,10 +35,41 @@ function ManifestacionCard({ m }) {
         <p className="mt-3 max-w-md text-sm text-cream/85 sm:text-base">{m.desc}</p>
       </div>
 
-      <div className="relative mt-7 flex w-fit items-center rounded-full bg-white/20 px-4 py-2.5 text-sm font-bold backdrop-blur-sm transition-colors duration-200 group-hover:bg-white/30 sm:px-5 sm:py-3 sm:text-base">
+      <div className="relative mt-7 flex w-fit items-center gap-2 rounded-full bg-white/20 px-4 py-2.5 text-sm font-bold backdrop-blur-sm transition-colors duration-200 group-hover:bg-white/30 sm:px-5 sm:py-3 sm:text-base">
         {hasPdf ? "Ver programación (PDF)" : "PDF próximamente"}
+        {hasPdf && <IconoNuevaPestana />}
       </div>
-    </button>
+    </>
+  );
+}
+
+// Con PDF la tarjeta abre el archivo en una pestaña nueva, a pantalla completa
+// en el visor propio del navegador: en móvil eso da pinch-zoom, índice de
+// páginas y descarga, cosas que un PDF incrustado en la página no ofrece.
+// Va como <a> y no como window.open() porque Safari en iOS bloquea las
+// ventanas abiertas por código aunque salgan de un clic del usuario.
+// Sin PDF, la tarjeta queda deshabilitada hasta que exista el archivo.
+function ManifestacionCard({ m }) {
+  const hasPdf = Boolean(m.pdf);
+
+  if (!hasPdf) {
+    return (
+      <button type="button" disabled className={CARD_CLASS}>
+        <CardContent m={m} hasPdf={false} />
+      </button>
+    );
+  }
+
+  return (
+    <a
+      href={m.pdf}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`Ver la programación de ${m.name} en PDF (se abre en una pestaña nueva)`}
+      className={CARD_CLASS}
+    >
+      <CardContent m={m} hasPdf />
+    </a>
   );
 }
 
