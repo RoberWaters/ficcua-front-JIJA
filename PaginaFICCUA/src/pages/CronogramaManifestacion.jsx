@@ -13,7 +13,7 @@ function ManifestacionCard({ m }) {
       type="button"
       disabled={!hasPdf}
       onClick={() => hasPdf && window.open(m.pdf, "_blank", "noopener,noreferrer")}
-      className="group relative flex min-h-[300px] flex-col justify-between overflow-hidden p-9 text-left text-cream shadow-xl transition-[filter] duration-300 hover:brightness-105 disabled:cursor-not-allowed sm:min-h-[360px]"
+      className="group relative flex min-h-[300px] flex-col justify-between overflow-hidden p-6 text-left text-cream shadow-xl transition-[filter] duration-300 hover:brightness-105 disabled:cursor-not-allowed sm:min-h-[360px] sm:p-9"
     >
       <img
         src={m.foto}
@@ -25,11 +25,11 @@ function ManifestacionCard({ m }) {
       <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent" />
 
       <div className="relative">
-        <h3 className="font-display text-3xl font-black leading-tight">{m.name}</h3>
-        <p className="mt-3 max-w-md text-cream/85">{m.desc}</p>
+        <h3 className="font-display text-2xl font-black leading-tight sm:text-3xl">{m.name}</h3>
+        <p className="mt-3 max-w-md text-sm text-cream/85 sm:text-base">{m.desc}</p>
       </div>
 
-      <div className="relative mt-7 flex w-fit items-center rounded-full bg-white/20 px-5 py-3 font-bold backdrop-blur-sm transition-colors duration-200 group-hover:bg-white/30">
+      <div className="relative mt-7 flex w-fit items-center rounded-full bg-white/20 px-4 py-2.5 text-sm font-bold backdrop-blur-sm transition-colors duration-200 group-hover:bg-white/30 sm:px-5 sm:py-3 sm:text-base">
         {hasPdf ? "Ver programación (PDF)" : "PDF próximamente"}
       </div>
     </button>

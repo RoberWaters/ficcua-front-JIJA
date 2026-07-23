@@ -36,7 +36,7 @@ export function Countries() {
             {STRIP.map((c, i) => (
               <div
                 key={i}
-                className="mx-5 flex w-52 shrink-0 flex-col items-center gap-4"
+                className="mx-3 flex w-36 shrink-0 flex-col items-center gap-3 sm:mx-5 sm:w-52 sm:gap-4"
                 aria-hidden={i >= COUNTRIES.length ? "true" : undefined}
               >
                 <div className="aspect-[4/3] w-full overflow-hidden rounded-xl shadow-[0_14px_34px_-14px_rgba(21,10,36,0.25)] ring-1 ring-ink/10">
@@ -47,7 +47,7 @@ export function Countries() {
                     loading="lazy"
                   />
                 </div>
-                <span className="text-sm font-bold tracking-wide text-ink/70">
+                <span className="text-center text-xs font-bold tracking-wide text-ink/70 sm:text-sm">
                   {c.name}
                 </span>
               </div>

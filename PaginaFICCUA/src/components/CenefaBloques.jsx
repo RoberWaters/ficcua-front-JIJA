@@ -1,3 +1,5 @@
+import { useEffect, useRef, useState } from "react";
+
 /* Paleta tomada de la imagen */
 const MAGENTA = "#E4175C";
 const COLORS = {
@@ -82,14 +84,27 @@ function Bars({ x }) {
 }
 
 export function CenefaBloques({ altura = 48 }) {
+  // Medimos el contenedor en vez de asumir un ancho fijo: con un tope de 2600px
+  // la cenefa se quedaba corta en monitores ultrawide y dejaba franja negra.
+  const contenedorRef = useRef(null);
+  const [ancho, setAncho] = useState(2600);
+
+  useEffect(() => {
+    const el = contenedorRef.current;
+    if (!el) return;
+    const ro = new ResizeObserver(([entrada]) => setAncho(entrada.contentRect.width));
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
+
   // Ancho que ocupa un tile a la altura final; repetimos los suficientes para
-  // cubrir pantallas anchas (el exceso lo recorta el overflow del contenedor).
+  // cubrir el contenedor (el exceso lo recorta su overflow).
   const tileRender = (TILE_W * altura) / H;
-  const repeticiones = Math.ceil(2600 / tileRender);
+  const repeticiones = Math.ceil(ancho / tileRender) + 1;
   const width = TILE_W * repeticiones;
 
   return (
-    <div className="w-full overflow-hidden bg-black" style={{ height: altura }}>
+    <div ref={contenedorRef} className="w-full overflow-hidden bg-black" style={{ height: altura }}>
       <svg
         viewBox={`0 0 ${width} ${H}`}
         height={altura}

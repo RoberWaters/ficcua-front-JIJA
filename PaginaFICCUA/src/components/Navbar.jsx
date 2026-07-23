@@ -129,6 +129,11 @@ export function Navbar() {
                 {l.label}
               </a>
             ))}
+            {/* El CTA vive en el bloque md:flex, que en móvil está oculto: sin
+                esta copia no había forma de llegar a cronogramas desde el menú. */}
+            <Button href="#cronogramas" size="sm" className="mt-2" onClick={() => setOpen(false)}>
+              Ver programación
+            </Button>
           </div>
         </div>
       </nav>

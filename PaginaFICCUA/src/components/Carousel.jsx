@@ -45,7 +45,7 @@ export function Carousel() {
   }, [index]);
 
   return (
-    <section id="galeria" className="relative flex min-h-screen scroll-mt-24 flex-col justify-center bg-cream py-12 text-ink">
+    <section id="galeria" className="relative flex min-h-[100svh] scroll-mt-24 flex-col justify-center bg-cream py-12 text-ink">
       <div className="mx-auto mb-12 max-w-4xl px-6">
         <SectionHeading
           kicker="Galería"
@@ -96,14 +96,14 @@ export function Carousel() {
           <button
             onClick={() => go(index - 1)}
             aria-label="Anterior"
-            className="absolute left-4 top-1/2 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-cream/90 text-ink shadow-xl transition-transform duration-200 hover:scale-110 active:scale-95 sm:left-6"
+            className="absolute left-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-cream/90 text-ink shadow-xl transition-transform duration-200 hover:scale-110 active:scale-95 sm:left-6 sm:h-12 sm:w-12"
           >
             <Chevron dir="left" />
           </button>
           <button
             onClick={() => go(index + 1)}
             aria-label="Siguiente"
-            className="absolute right-4 top-1/2 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-cream/90 text-ink shadow-xl transition-transform duration-200 hover:scale-110 active:scale-95 sm:right-6"
+            className="absolute right-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-cream/90 text-ink shadow-xl transition-transform duration-200 hover:scale-110 active:scale-95 sm:right-6 sm:h-12 sm:w-12"
           >
             <Chevron dir="right" />
           </button>

@@ -19,7 +19,7 @@ export function Hero() {
   }, [reduceMotion]);
 
   return (
-    <header id="top" className="relative flex min-h-screen flex-col overflow-hidden pt-24 sm:pt-28">
+    <header id="top" className="relative flex min-h-[100svh] flex-col overflow-hidden pt-24 sm:pt-28">
       {/* Galería de fondo — crossfade y deriva ken burns lenta */}
       <div className="absolute inset-0">
         {HERO_GALLERY.map((src, i) => (
@@ -67,10 +67,13 @@ export function Hero() {
               </span>
             </span>
             <span className="block overflow-hidden">
+              {/* En móvil se deja envolver en dos líneas: forzar nowrap ahí
+                  obligaba a bajar la fuente a ~13px para que cupieran los 33
+                  caracteres, y quedaba diminuto contra el título. El nowrap
+                  vuelve desde sm, donde ya hay ancho de sobra. */}
               <span
-                className="text-gradient-warm block whitespace-nowrap"
+                className="text-gradient-warm block text-[clamp(1.15rem,5vw,1.5rem)] sm:whitespace-nowrap sm:text-[min(3.6vw,2.25rem)]"
                 style={{
-                  fontSize: "min(3.6vw, 2.25rem)",
                   backgroundSize: "200% auto",
                   animation: "rise 0.9s var(--ease-out) 0.18s both, gradient-drift 5s ease-in-out 1.1s infinite",
                 }}

@@ -25,17 +25,20 @@ export function PageHeader({ kicker, title, description }) {
         <div className="animate-float-y absolute bottom-[12%] right-[18%] h-12 w-12 rounded-full border-2 border-ficcua-blue/40 bg-ficcua-blue/10" style={{ animationDelay: "1s" }} />
       </div>
 
-      <nav className="relative mx-auto flex max-w-7xl items-center justify-between px-6">
-        <Link to="/" className="flex items-center gap-3">
-          <img src={logo} alt="FICCUA" className="h-11 w-auto drop-shadow" />
+      <nav className="relative mx-auto flex max-w-7xl items-center justify-between gap-3 px-6">
+        <Link to="/" className="flex min-w-0 items-center gap-3">
+          <img src={logo} alt="FICCUA" className="h-9 w-auto drop-shadow sm:h-11" />
         </Link>
-        <Button to="/" variant="ghost" size="sm" className="group">
+        <Button to="/" variant="ghost" size="sm" className="group shrink-0">
           <BackArrow />
-          Volver al inicio
+          {/* En móvil solo la flecha y "Inicio": el rótulo completo no cabe
+              junto al logo en pantallas de 320px. */}
+          <span className="sm:hidden">Inicio</span>
+          <span className="hidden sm:inline">Volver al inicio</span>
         </Button>
       </nav>
 
-      <Reveal className="relative mx-auto mt-16 max-w-4xl px-6 text-center" variant="rise">
+      <Reveal className="relative mx-auto mt-10 max-w-4xl px-6 text-center sm:mt-16" variant="rise">
         <Kicker>{kicker}</Kicker>
         <h1 className="mt-3 font-display text-[clamp(2.5rem,6vw,4.5rem)] font-black leading-[0.95] text-ink">
           {title}

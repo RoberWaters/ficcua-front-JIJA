@@ -37,11 +37,11 @@ function CardContent({ c, photo }) {
 
       <div className="relative">
         <p className="kicker text-cream/70">{c.kicker}</p>
-        <h3 className="mt-2 font-display text-3xl font-black leading-tight">{c.title}</h3>
-        <p className="mt-3 max-w-md text-cream/85">{c.desc}</p>
+        <h3 className="mt-2 font-display text-2xl font-black leading-tight sm:text-3xl">{c.title}</h3>
+        <p className="mt-3 max-w-md text-sm text-cream/85 sm:text-base">{c.desc}</p>
       </div>
 
-      <div className="relative mt-7 flex w-fit items-center gap-2 rounded-full bg-white/20 px-5 py-3 font-bold backdrop-blur-sm transition-colors duration-200 group-hover:bg-white/30">
+      <div className="relative mt-7 flex w-fit items-center gap-2 rounded-full bg-white/20 px-4 py-2.5 text-sm font-bold backdrop-blur-sm transition-colors duration-200 group-hover:bg-white/30 sm:px-5 sm:py-3 sm:text-base">
         {hasPdf ? (hasFile ? "Ver PDF" : "PDF próximamente") : "Entrar"}
         <Arrow />
       </div>
@@ -61,7 +61,7 @@ export function CronogramaLinks() {
         {CRONOGRAMAS.map((c, i) => {
           const photo = CARD_PHOTOS[i % CARD_PHOTOS.length];
           const cardClass =
-            "group relative flex min-h-[340px] flex-col justify-between overflow-hidden p-9 text-left text-cream shadow-xl transition-[filter] duration-300 hover:brightness-105 disabled:cursor-not-allowed sm:min-h-[400px] lg:p-14";
+            "group relative flex min-h-[340px] flex-col justify-between overflow-hidden p-6 text-left text-cream shadow-xl transition-[filter] duration-300 hover:brightness-105 disabled:cursor-not-allowed sm:min-h-[400px] sm:p-9 lg:p-14";
 
           return (
             <Reveal key={c.title} variant="rise" delay={i * 90}>

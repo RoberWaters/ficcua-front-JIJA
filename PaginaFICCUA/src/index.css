@@ -81,19 +81,26 @@ body {
 
 /* Escala tipográfica editorial — para los títulos de hero y de sección, en vez
    de armar un clamp con text-4xl o text-5xl suelto en cada componente. */
+/* El mínimo del clamp tiene que caber en un teléfono: palabras largas como
+   "Interuniversitario" no se pueden partir, así que si el mínimo es muy alto
+   desbordan el ancho y el overflow-hidden de la animación las recorta. */
 .text-display-1 {
   font-family: var(--font-display);
   font-weight: 900;
   line-height: 0.9;
   letter-spacing: -0.01em;
-  font-size: clamp(2.75rem, 8vw, 6.5rem);
+  font-size: clamp(1.7rem, 8vw, 6.5rem);
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 .text-display-2 {
   font-family: var(--font-display);
   font-weight: 900;
   line-height: 0.98;
   letter-spacing: -0.01em;
-  font-size: clamp(2.1rem, 4.4vw, 3.5rem);
+  font-size: clamp(1.75rem, 6vw, 3.5rem);
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 
 /* La etiqueta que se repetía suelta en cada sección: Hero, Stats, Carousel,
