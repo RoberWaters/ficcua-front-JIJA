@@ -5,7 +5,6 @@ import { CenefaBloques } from "./CenefaBloques";
 import { Button } from "./ui/Button";
 
 const LINKS = [
-  { href: "#cronogramas", label: "Cronogramas" },
   { href: "#contadores", label: "El festival" },
   { href: "#galeria", label: "Galería" },
   { href: "#paises", label: "Países" },

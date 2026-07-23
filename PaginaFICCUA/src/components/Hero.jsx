@@ -81,7 +81,7 @@ export function Hero() {
           </h1>
 
           <p className="mx-auto mt-6 max-w-md text-lg text-cream/70" style={{ animation: "fade-in-up 0.8s var(--ease-out) 0.3s both" }}>
-            Centroamérica y el Caribe se reúnen en danza, teatro, música, artes visuales, cine y literatura.
+            Centroamérica y el Caribe se reúnen en danza, teatro, música, artes visuales, cinematografía y literatura.
           </p>
 
           <div className="mt-9 flex flex-wrap justify-center gap-4" style={{ animation: "fade-in-up 0.8s var(--ease-out) 0.4s both" }}>

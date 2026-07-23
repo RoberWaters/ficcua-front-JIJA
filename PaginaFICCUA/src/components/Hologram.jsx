@@ -57,13 +57,15 @@ export function Hologram() {
   }, []);
 
   return (
-    <section className="relative flex h-screen flex-col items-center justify-center overflow-hidden bg-cream">
+    <section className="relative flex flex-col items-center justify-center overflow-hidden bg-cream py-6 sm:py-8">
       <div className="pointer-events-none absolute left-1/2 top-1/2 h-96 w-96 -translate-x-1/2 -translate-y-1/2 rounded-full bg-ficcua-blue/10 blur-3xl" />
 
       <div className="relative w-full text-center">
         <Reveal delay={120}>
+          {/* Sin alto fijo: la caja se ajusta al logo, y el pb inferior reserva
+              el sitio justo de la sombra del piso para que no se le meta debajo. */}
           <div
-            className="relative mx-auto flex h-160 w-full items-center justify-center"
+            className="relative mx-auto flex w-full items-center justify-center pt-2 pb-16"
             style={{ perspective: "1600px" }}
           >
             {/* partículas ascendentes */}
