@@ -4,6 +4,9 @@ import danzaNoche from "./assets/photos/danza-noche.jpg";
 import garifuna from "./assets/photos/garifuna.jpg";
 import pollera from "./assets/photos/pollera.jpg";
 import danzaAfricana from "./assets/photos/danza-africana.jpg";
+import coro from "./assets/photos/coro.jpg";
+import mimos from "./assets/photos/mimos.jpg";
+import escenaCostumbrista from "./assets/photos/escena-costumbrista.jpg";
 
 // Fondo del hero
 export { grupoFolclorico as HERO_IMG };
@@ -28,6 +31,9 @@ export const CAROUSEL = [
   // Los rostros están en la franja superior; anclamos el recorte hacia arriba
   // para que no se corten las caras en pantallas anchas (crop vertical).
   { src: danzaAfricana, title: "Ritmo y raíz afro", caption: "Energía, telas y percusión", position: "50% 20%" },
+  { src: coro, title: "Coro universitario", caption: "Voces que se unen en un solo canto" },
+  { src: mimos, title: "Mímica y teatro", caption: "Gesto y emoción sin palabras" },
+  { src: escenaCostumbrista, title: "Teatro costumbrista", caption: "Tradición y sabor sobre el escenario" },
 ];
 
 // Sección 5 — Contadores (valores placeholder, a conectar con datos reales)
